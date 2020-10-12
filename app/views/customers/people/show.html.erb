@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+  	<div class="col-lg-12">
+          <%= attachment_image_tag @portrait, :image, size: "300×300", fallback: "no_image.jpg" %>
+
+
+          <%= form_for(@portrait, url: person_portraits_path(@person.id)) do |f| %>
+          <p>
+          肖像画（サイズで表示されます）
+          <%= f.attachment_field :image %>
+          </p>
+          <br><%= f.submit '肖像画を追加する', class: "btn btn-success btn-lg" %>
+          <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-9">
+
+
+        <p><%= @person.name_kana %></p>
+        <h1><%= @person.name %></h1>
+        <p>別名<%= @person.alias %></p>
+        <p><%= @person.birth %>〜<%= @person.death %></p>
+        <p><%= @person.country %></p>
+        <h4><%= @person.introduction %></h4>
+
+
+        <h2>お勧め史料</h2>
+        <h4>初心者にオススメ！</h4>
+        <div class="add button">
+          <%= link_to '史料を登録する', new_book_path, class: 'btn btn-primary' %>
+        </div>
+        <% @books.each do |book| %>
+          <%= book.title%>
+          <%= book.caption %>
+          <%= book.image_url %>
+        <% end %>
+
+    </div>
+    <div class="col-lg-3">
+    </div>
+
+  </div>
+</div>

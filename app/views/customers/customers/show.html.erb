@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="row">
+     <div class="col-sm-8 text-center" style=""><h4><mark style="background-color: #F8F8F8F8;">マイページ</mark></h4></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2" style=""><h4><strong>登録情報</strong></h4></div>
+        <div class="col-sm-1" style=""><%= link_to '編集する', edit_customer_path, class: 'btn btn-primary' %></div>
+        <div class="col-sm-1" style=""><%= link_to 'パスワードを変更する', "#", class: 'btn btn-primary' %></div>
+        <div class="col-sm-1" style=""><%= link_to '退会する', "#", class: 'btn btn-primary' %></div>
+    </div>
+    <div class="row">
+     <div class="col-sm-8 " style="">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td class="active col-sm-3">ニックネーム</td>
+              <td class=""><%= @customer.name %></td>
+            </tr>
+            <tr>
+              <td class="active">自己紹介</td>
+              <td><%= @customer.introduction %></td>
+            </tr>
+            <tr>
+            <tr>
+              <td class="active">メールアドレス</td>
+              <td><%= @customer.email %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>

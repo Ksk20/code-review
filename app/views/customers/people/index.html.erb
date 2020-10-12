@@ -1,0 +1,8 @@
+<div class="container">
+
+	<h1>偉人一覧</h1>
+	<% @people.each do |person| %>
+	<p>人物名</p>
+	<span><%= link_to person.name, person_path(person.id) %></span>
+	<% end %>
+</div>
