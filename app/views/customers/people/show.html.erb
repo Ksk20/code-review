@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
   	<div class="col-lg-12">
-          <%= attachment_image_tag @portrait, :image, size: "300×300", fallback: "no_image.jpg" %>
+       <% @person.portraits.each do |portrait| %>
+        <%= attachment_image_tag portrait, :image, :fill, 120, 120, fallback: "/images/no_image.jpg" %>
+       <% end %>
 
 
           <%= form_for(@portrait, url: person_portraits_path(@person.id)) do |f| %>
@@ -9,8 +11,9 @@
           肖像画（サイズで表示されます）
           <%= f.attachment_field :image %>
           </p>
-          <br><%= f.submit '肖像画を追加する', class: "btn btn-success btn-lg" %>
+          <br><%= f.submit '肖像画を追加する', class: "btn btn-success" %>
           <% end %>
+
     </div>
   </div>
   <div class="row">
@@ -25,19 +28,66 @@
         <h4><%= @person.introduction %></h4>
 
 
-        <h2>お勧め史料</h2>
+        <h3>オススメ史料</h3>
         <h4>初心者にオススメ！</h4>
         <div class="add button">
           <%= link_to '史料を登録する', new_book_path, class: 'btn btn-primary' %>
         </div>
-        <% @books.each do |book| %>
-          <%= book.title%>
-          <%= book.caption %>
-          <%= book.image_url %>
-        <% end %>
+        <table>
+          <% @books.each do |book| %>
+            <tr>
+              <td>【タイトル】<%= book.title%>
+                  <% if book.favorited_by?(current_customer) %>
+
+　　　　　　　　　　　  <%= link_to book_favorite_path(book,people_id: params[:id]), method: :delete do %>
+　　　　　　　　　　　    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+　　　　　　　　　　　    <%= book.favorites.count %> いいね
+　　　　　　　　　　　  <% end %>
+　　　　　　　　　　　　<% else %>
+　　　　　　　　　　　  <%= link_to book_favorites_path(book,people_id: params[:id]) , method: :post do %>
+　　　　　　　　　　　    <i class="fa fa-heart-o" aria-hidden="true"></i>
+　　　　　　　　　　　    <%= book.favorites.count %> いいね
+　　　　　　　　　　　  <% end %>
+　　　　　　　　　　　<% end %>
+              </td></tr>
+            <tr>
+              <td>【紹介文】<%= book.caption %></td></tr>
+            <tr><td><%= book.image_url %></td></tr>
+          <% end %>
+        </table>
+        <h4>その他オススメ！</h4>
 
     </div>
     <div class="col-lg-3">
+      <h3>作品</h3>
+        <div class="add button">
+          <%= link_to '作品を登録する', new_creation_path, class: 'btn btn-primary' %>
+        </div>
+      <div class="e"></div>
+      <table>
+        <% @person.creations.each do |creation| %>
+        <tr>
+          <td><%= attachment_image_tag creation, :image, :fill, 50, 50 %>
+          </td>
+        </tr>
+        <tr>
+            <%= creation.caption %>
+          </td>
+        </tr>
+        <tr>
+          <td><% if creation.customer.id == current_customer.id %>
+              <%= link_to "Edit", edit_creation_path(creation.id), class: "btn btn-default" %>
+              <% end %>
+              <% if creation.customer.id == current_customer.id %>
+              <%= link_to "Destroy", creation_path(creation), method: :delete, class: "btn btn-default" %>
+              <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+      </table>
+      <div class="e"></div>
+
     </div>
 
   </div>

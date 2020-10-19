@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+  	<div class="col-lg">
+
+  		<%= form_with model: @creation do |f| %>
+
+			<h4>絵</h4>
+  			 <%= f.attachment_field :image %>
+      <h4>その他</h4>
+         <%= f.attachment_field :cartoon %>
+  		<h4>説明文</h4>
+  			<%= f.text_area :caption %>
+  			<%= f.submit '投稿' %>
+		<% end %>
+
+	</div>
+  </div>
+ </div>

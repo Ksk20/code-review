@@ -1,1 +1,38 @@
-<h1>仮TOP</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1>仮TOP</h1>
+
+
+			<h3>新着偉人</h3>
+				<div class="row">
+					<% @people.each do |person| %>
+		                	<div class="col-lg-2">
+					    		<% [person.portraits.sample].each do |portrait| %>
+        						<%= attachment_image_tag portrait, :image, :fill, 150, 150, fallback: "/images/no_image.jpg" %>
+        						<%= link_to person.name, person_path(person.id) %>
+       							<% end %>
+       						</div>
+					<% end %>
+				</div>
+
+			<h3>肖像画募集中</h3>
+				<div class="row">
+					<% @advertisements.each do |person| %>
+		                	<div class="col-lg-2">
+		                		<%= image_tag 'no_image.jpg', size: '150x150' %>
+		                		<%#= attachment_image_tag person.portraits.sample, :image, :fill, 150, 150, fallback: "no_image.jpg" %>
+		                		<%= link_to person.name, person_path(person.id) %>
+       						</div>
+					<% end %>
+				</div>
+			<h3>史料募集中</h3>
+				<% @unregistereds.each do |person| %>
+		                	<div class="col-lg-2">
+		                		<%= attachment_image_tag @portrait, :image, :fill, 150, 150, fallback: "/images/no_image.jpg" %>
+        						<%#= attachment_image_tag portrait, :image, :fill, 150, 150, fallback: "no_image.jpg" %>
+        						<%= link_to person.name, person_path(person.id) %>
+       						</div>
+					<% end %>
+				</div>
+

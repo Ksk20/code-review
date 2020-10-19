@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :beginners, dependent: :destroy
   has_many :portraits, dependent: :destroy
   has_many :creations, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
 
   enum is_member: {Available: true, Invalid: false}

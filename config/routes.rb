@@ -14,8 +14,9 @@ Rails.application.routes.draw do
     resources :people, only:[:index, :create, :show, :edit, :update, :new] do
       resources :portraits, only:[:index, :create, :destroy]
     end
-    resources :books, only:[:new, :index, :create, :edit, :update, :destroy]
-    resources :beginners, only:[:new, :index, :create, :edit, :update, :destroy]
+    resources :books, only:[:new, :index, :create, :edit, :update, :destroy] do
+      resources :favorites, only: [:create, :destroy]
+    end
     resources :creations, only:[:new,:index, :create, :edit, :update, :destroy]
   end
 
@@ -25,5 +26,6 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :people, only: [:index, :destroy]
   end
 end
