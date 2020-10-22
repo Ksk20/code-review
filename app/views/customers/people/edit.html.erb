@@ -1,22 +1,29 @@
 <div class="container">
   <div class="row">
-  	<div class="col-lg">
+  	<div class="col-lg-12">
       <h4>偉人編集</h4>
-        <%= form_for(@person) do |f| %>
-            <h4>フリガナ（全角カタカナ）</h4>
-            <%= f.text_field :name_kana %>
-            <h4>別名</h4>
-            <%= f.text_field :alias %>
-            <h4>出身国</h4>
-            <%= f.text_field :country %>
-            <h4>生まれた年</h4>
-            <%= f.text_field :birth %>
-            <h4>亡くなった年</h4>
-            <%= f.text_field :death %>
-            <h4>紹介文</h4>
-            <%= f.text_area :introduction %>
-            <%= f.submit '保存', class: "btn btn-success btn-lg" %>
-          <% end %>
+
+
+
+          <%= form_for(@person) do |f| %>
+              <p class="form-title">フリガナ（全角カタカナ）</p>
+              <span class="form-a"><%= f.text_field :name_kana %></span>
+              <p class ="form-title">別名</p>
+              <span class="form-a"><%= f.text_field :alias %></span>
+              <p class="form-title">出身国</p>
+              <span class="form-a"><%= f.text_field :country %></span>
+              <p class="form-title">生まれた年</p>
+              <span class="form-a"><%= f.text_field :birth %>
+              <p class="form-title">亡くなった年</p></span>
+              <span class="form-a"><%= f.text_field :death %></span>
+              <p class="form-title">紹介文</p>
+              <span class="form-a"><%= f.text_area :introduction %></span><br>
+
+              <span class="form-a"><%= f.submit '保存', class: "btn-z" %></span>
+            <% end %>
+
+
+
 
     </div>
   </div>

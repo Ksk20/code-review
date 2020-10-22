@@ -1,3 +1,41 @@
 // Place all the styles related to the customers::people controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn {
+	background: #f45d48;
+	color: #fffffe;
+}
+
+a.btn.edit_btn {
+	background: #078080;
+	color: #fffffe;
+	margin-top: 3px;
+}
+.btn-z {
+	background: #f45d48;
+	color: #fffffe;
+}
+.portrait_add_btn {
+	padding-top: 10px
+}
+.introduction{
+	font-size: 16px
+}
+.border-width-bold {
+    border-width: 3px;
+    margin-top: -6px;
+}
+div.col-lg-3.creation{
+	background: #f8f5f2;
+	padding: 10px;
+}
+
+h4:first-letter {
+  font-size: 2em;
+  color: #078080;
+}
+p.form-title{
+	margin-top: 10px;
+}
+

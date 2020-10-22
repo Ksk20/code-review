@@ -3,8 +3,13 @@ class Customers::CustomersController < ApplicationController
 	before_action :correct_customer, only: [:edit, :update, :destroy]
 
 	def show
+		@people =Person.all
 		@customer = Customer.find(params[:id])
+		@books = @customer.books
+		@favorites = Favorite.where(customer_id: @customer.id)
+		@like_books = Book.find(@favorites.pluck(:book_id))
 		@portraits = @customer.portraits
+
 	end
 
 	def edit
@@ -26,6 +31,8 @@ class Customers::CustomersController < ApplicationController
 		redirect_to home_path
 	end
 
+	def destruction
+	end
 private
 	def customer_params
     	params.require(:customer).permit(:name,:introduction,:image_id,:back_image_id,:is_member,:email)

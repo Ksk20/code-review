@@ -10,20 +10,20 @@ class Customers::PeopleController < ApplicationController
 
 	def show
 		@person = Person.find(params[:id])
-		@books = @person.books
+		@books = @person.books.page(params[:page]).per(10)
 
-		@creations = @person.creations
+		@creations = @person.creations.page(params[:page]).per(10)
 		@portrait =Portrait.new
 	end
 
 	def create
     	@person = Person.new(person_params)
-    if	@person.save
-    	flash[:notice] = "新しく偉人を登録しました！"
-    	redirect_to person_path(@person.id)
-    else
-    	render action: :new
-	end
+    	if	@person.save
+    		flash[:notice] = "新しく偉人を登録しました！"
+    		redirect_to person_path(@person.id)
+    	else
+    		render action: :new
+		end
 	end
 
 	def edit

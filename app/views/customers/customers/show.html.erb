@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="row">
-     <div class="col-sm-8 text-center" style=""><h4><mark style="background-color: #F8F8F8F8;">マイページ</mark></h4></div>
+     <div class="col-sm-8 text-center" style="">
+      <h4><mark></mark></h4></div>
     </div>
     <div class="row">
       <div class="col-sm-2" style=""><h4><strong>登録情報</strong></h4></div>
-        <div class="col-sm-1" style=""><%= link_to '編集する', edit_customer_path, class: 'btn btn-primary' %></div>
-        <div class="col-sm-1" style=""><%= link_to 'パスワードを変更する', "#", class: 'btn btn-primary' %></div>
-        <div class="col-sm-1" style=""><%= link_to '退会する', "#", class: 'btn btn-primary' %></div>
+        <div class="col-sm-1" style=""><%= link_to '編集する', edit_customer_path, class: 'btn' %></div>
+        <div class="col-sm-1" style=""><%= link_to 'パスワードを変更する', "#", class: 'btn' %></div>
+        <div class="col-sm-1" style="margin-left: 83px; margin-bottom: 10px;"><%= link_to '退会する', customer_destruction_path, class: 'btn edit_btn' %></div>
     </div>
     <div class="row">
      <div class="col-sm-8 " style="">
@@ -21,11 +22,6 @@
               <td class="active">自己紹介</td>
               <td><%= @customer.introduction %></td>
             </tr>
-            <tr>
-            <tr>
-              <td class="active">メールアドレス</td>
-              <td><%= @customer.email %></td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -34,34 +30,84 @@
     <!-- タブ表示設定　-->
 
 <ul class="nav nav-tabs">
-  <li><a href="#tabA" data-toggle="tab">史料一覧</a></li>
-  <li><a href="#tabB" data-toggle="tab">肖像画一覧</a></li>
+  <li><a href="#tabA" data-toggle="tab">投稿史料一覧</a></li>
+  <li><a href="#tabB" data-toggle="tab">投稿肖像画一覧</a></li>
   <li><a href="#tabC" data-toggle="tab">いいね一覧</a></li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane active" id="tabA">
-    <p>タブＡの内容</p>
+    <table class="table table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th>タイトル</th>
+      <th>説明文</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @books.each do |book| %>
+  <tbody>
+    <tr>
+      <th>
+            <%= link_to book.person.name, person_path(book.person.id) %>
+
+      </th>
+      <td><%= book.title%></td>
+      <td><%= book.caption %></td>
+      <td>
+        <% if book.customer.id == current_customer.id %>
+          <%= link_to "編集する", edit_person_book_path(person_id: book.person_id, id: book.id) %>
+        <% end %>
+        <% if book.customer.id == current_customer.id %>
+          <%= link_to "消去", person_book_path(person_id: book.person_id, id: book.id), method: :delete %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+  </table>
   </div>
   <div class="tab-pane" id="tabB">
     <p>
       <% @portraits.each do |portrait| %>
 
-          <%= attachment_image_tag portrait, :image, :fill, 100, 100, fallback: "no_image.jpg"%>
+          <%= attachment_image_tag portrait, :image, :fill, 100, 100 %>
             <% if portrait.customer.id == current_customer.id %>
-              <%= link_to "Destroy", person_portrait_path(portrait.customer.id,portrait), method: :delete, class: "btn btn-default" %>
-            <% end %>
+              <%= link_to "Destroy", person_portrait_path(portrait.customer.id,portrait), method: :delete, class: "btn btn-default" %><% end %>
         <% end %>
     </p>
   </div>
   <div class="tab-pane" id="tabC">
-    <p>タブＣの内容</p>
+    <table class="table table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th>タイトル</th>
+      <th>説明文</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @like_books.each do |book| %>
+  <tbody>
+    <tr>
+      <th><%= link_to book.person.name, person_path(book.person.id) %></th>
+      <td><%= book.title%></td>
+      <td><%= book.caption %></td>
+      <td>
+        <% if book.customer_id == current_customer.id %>
+          <%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book) %>
+        <% end %>
+        <% if book.customer_id == current_customer.id %>
+          <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+  </table>
   </div>
 </div>
-<!-- <div class="tab-content">
-  <div class="tab-pane fade" id="item1" role="tabpanel" aria-labelledby="item1-tab">This is a text of item#1.</div>
-  <div class="tab-pane fade active show" id="item2" role="tabpanel" aria-labelledby="item2-tab">肖像画一覧</div>
-  <div class="tab-pane fade" id="item3" role="tabpanel" aria-labelledby="item3-tab">いいね一覧</div>
-</div> -->
+
     </div>
   </div>
 </div>

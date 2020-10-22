@@ -1,8 +1,7 @@
 class Customers::HomesController < ApplicationController
 	def top
-		@people = Person.all
+		@people = Person.all.page(params[:page]).per(6)
 		@portraits = Portrait.all
-		#@advertisement = Portrait.where(image: nil)
 		@advertisements = Person.all.select do |person|
 			person.portraits.empty?
 		end

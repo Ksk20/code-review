@@ -6,7 +6,6 @@ class Customer < ApplicationRecord
 
   has_many :people
   has_many :books, dependent: :destroy
-  has_many :beginners, dependent: :destroy
   has_many :portraits, dependent: :destroy
   has_many :creations, dependent: :destroy
   has_many :favorites, dependent: :destroy

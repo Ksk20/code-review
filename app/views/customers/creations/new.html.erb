@@ -2,7 +2,7 @@
   <div class="row">
   	<div class="col-lg">
 
-  		<%= form_with model: @creation do |f| %>
+      <%= form_with(model: @creation, url: person_creations_path(@person)) do |f| %>
 
 			<h4>絵</h4>
   			 <%= f.attachment_field :image %>

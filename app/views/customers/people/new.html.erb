@@ -1,57 +1,31 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h4><mark style="background-color: #F8F8F8F8;">偉人登録</mark></h4>
+    <div class="col-ig-12">
+      <h4>偉人登録</h4>
       <%= form_for(@person) do |f| %>
 
       <%# ここからエラーメッセージ %>
       <%= render 'layouts/error_messages', model: f.object %>
       <%# ここまでエラーメッセージ %>
 
-        <p>名前
-          <span style="padding-left: 15px;">
-            <%= f.text_field :name %>
-          </span>
-        </p>
-		    <p>
-          フリガナ（全角カタカナ）
-          <span style="padding-left: 135px;">
-		        <%= f.text_field :name_kana, style: 'width: 400px;' %>
-          </span>
-        </p>
-		    <p>
-          別名
-		      <span style="padding-left: 135px;">
-            <%= f.text_field :alias %>
-          </span>
-        </p>
-        <p>
-          出身国（もしくは活躍した国）
-          <span style="padding-left: 135px;">
-            <%= f.text_field :country %>
-          </span>
-        </p>
-        <p>
-          生まれた年
-          <span style="padding-left: 135px;">
-            <%= f.text_field :birth %>年
-          </span>
-        </p>
-        <p>
-          亡くなった年
-          <span style="padding-left: 135px;">
-            <%= f.text_field :death %>年
-          </span>
-        </p>
-        <p>
-          紹介文
-          <span style="padding-left: 135px;">
-            <%= f.text_area :introduction %>
-          </span>
-        </p>
-        <p>
-          <span style="padding-left: 300px;">
-		        <%= f.submit '登録する', class: "btn btn-success btn-lg" %>
-          </span>
-        </p>
+        <p class="form-title">名前</p>
+            <span class="form-a"><%= f.text_field :name %>
+            </span>
+             <p class="form-title">フリガナ（全角カタカナ）</p>
+              <span class="form-a"><%= f.text_field :name_kana %></span>
+              <p class ="form-title">別名</p>
+              <span class="form-a"><%= f.text_field :alias %></span>
+              <p class="form-title">出身国</p>
+              <span class="form-a"><%= f.text_field :country %></span>
+              <p class="form-title">生まれた年</p>
+              <span class="form-a"><%= f.text_field :birth %>
+              <p class="form-title">亡くなった年</p></span>
+              <span class="form-a"><%= f.text_field :death %></span>
+              <p class="form-title">紹介文</p>
+              <span class="form-a"><%= f.text_area :introduction %></span><br>
+
+              <span class="form-a"><%= f.submit '保存', class: "btn-z" %></span>
 	　  <% end %>
+</div>
+</div>
+</div>

@@ -8,13 +8,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-<header class="navbar navbar-inverse navbar-fixed-top">
+  <body style="color #232323">
+<header class="navbar navbar-fixed-top" style="background: #f8f5f2" >
   <div class="container">
 
       <nav class="nav navbar-nav navbar-left">
@@ -44,16 +44,16 @@
               <%= link_to "使い方", how_to_use_path, class:"" %></li>
             <li class='navbox'>
               <%= link_to '人物一覧', people_path , class:"" %></span></li>
-            <li class='navbox'>
-             <%= link_to "新規登録", new_customer_registration_path, class:"" %></li>
-            <li class='navbox'>
-              <%= link_to "ログイン", new_customer_session_path, class:"" %></li>
+            <li class='navbox' style="margin-top: 12px; margin-left: 8px;" >
+             <span style="color: #f45d48;"><%= link_to "新規登録", new_customer_registration_path, class:"s-button" %></span></li>
+            <li class='navbox' style="color: #fffffe; margin-top: 12px; margin-left: 10px;" >
+              <span style="color: #fffffe"><%= link_to "ログイン", new_customer_session_path, class:"l-button"%></span></li>
             <% end %>
 
       </nav>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          <%= link_to "偉人登録", new_person_path, class:"" %></li>
+          <%= link_to "偉人登録", new_person_path, class:"btn-circle-border-double" %></li>
         </ul>
 
       </nav>

@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg">
+      <h4><mark>史料情報編集</mark></h4>
+      <%= form_with(model: @book , url: person_book_path(@person)) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        <p class ="form-title">タイトル</p>
+        <span class="form-a"><%= f.text_field :title %></span>
+        <p class ="form-title">説明文</p>
+        <span class="form-a"><%= f.text_area :caption %></span>
+        <p class ="form-title">書誌ID</p>
+        <span class="form-a"><%= f.text_area :image_url %></span><br>
+		      <%= f.submit "編集内容を保存する"%>
+        </div>
+	    <% end %>
+    </div>
+  </div>
+</div>

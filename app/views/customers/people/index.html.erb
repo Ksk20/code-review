@@ -1,7 +1,15 @@
 <div class="container">
+	<div class="row">
+		<div class="col-lg-12">
 
-	<h1>偉人一覧</h1>
-	<% @people.each do |person| %>
-	<span><%= link_to person.name, person_path(person.id) %></span>
-	<% end %>
+			<h4><mark>偉人一覧</mark></h4>
+			<% @people.each do |person| %>
+				<% [person.portraits.sample].each do |portrait| %>
+    		    	<%= attachment_image_tag portrait, :image, :fill, 140, 140, fallback: "/images/no_image.jpg" %>
+    		   	<% end %>
+				<span><%= link_to person.name, person_path(person.id) %></span>
+			<% end %>
+
+		</div>
+	</div>
 </div>

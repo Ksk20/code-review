@@ -1,10 +1,16 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1>仮TOP</h1>
+			<h4><mark>ようこそNumareへ</mark></h4>
 
-
-			<h3>新着偉人</h3>
+			 <div class="skbox">
+			   <div class="theTarget">
+			     <div class="main_visual1" ></div>
+			     <div class="main_visual2" ></div>
+			     <div class="main_visual3" ></div>
+			   </div>
+			 </div>
+			<p class="tipic">新着偉人</p>
 				<div class="row">
 					<% @people.each do |person| %>
 		                	<div class="col-lg-2">
@@ -14,24 +20,27 @@
        							<% end %>
        						</div>
 					<% end %>
+					<%= paginate @people %>
 				</div>
 
-			<h3>肖像画募集中</h3>
+			<p class="tipic">肖像画募集中</p>
+
 				<div class="row">
 					<% @advertisements.each do |person| %>
 		                	<div class="col-lg-2">
-		                		<%= image_tag 'no_image.jpg', size: '150x150' %>
+		                		<%= image_tag '/images/no_image.jpg', size: '150x150' %>
 		                		<%#= attachment_image_tag person.portraits.sample, :image, :fill, 150, 150, fallback: "no_image.jpg" %>
 		                		<%= link_to person.name, person_path(person.id) %>
        						</div>
 					<% end %>
 				</div>
-			<h3>史料募集中</h3>
+			<p class="tipic">史料募集中</p>
 				<% @unregistereds.each do |person| %>
 		                	<div class="col-lg-2">
-		                		<%= attachment_image_tag @portrait, :image, :fill, 150, 150, fallback: "/images/no_image.jpg" %>
-        						<%#= attachment_image_tag portrait, :image, :fill, 150, 150, fallback: "no_image.jpg" %>
+		                		<% [person.portraits.sample].each do |portrait| %>
+		                		<%= attachment_image_tag portrait, :image, :fill, 150, 150, fallback: "/images/no_image.jpg" %>
         						<%= link_to person.name, person_path(person.id) %>
+        						<% end %>
        						</div>
 					<% end %>
 				</div>
