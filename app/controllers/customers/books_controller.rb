@@ -5,6 +5,10 @@ class Customers::BooksController < ApplicationController
 	def new
     @person = Person.find(params[:person_id])
 		@book = Book.new
+      respond_to do |format|
+        format.html
+        format.json
+      end
 
 	end
 

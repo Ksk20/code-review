@@ -19,7 +19,7 @@ class Customers::CustomersController < ApplicationController
 	def update
 	 	@customer = current_customer
       if  @customer.update(customer_params)
-     	  redirect_to customers_path(@customer.id), notice: "You have updated user successfully."
+     	  redirect_to customer_path(@customer.id)
       else
     	render "edit"
       end

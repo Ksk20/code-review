@@ -2,15 +2,44 @@
   <div class="row">
   	<div class="col-lg">
       <h4><mark>新規史料登録</mark></h4>
+
+
+
+
   		<%= form_with(model: @book, url: person_books_path(@person)) do |f| %>
 
-  			<%= render 'layouts/error_messages', model: f.object %>
+        <%# エラーメッセージ　%>
+        <% if @book.errors %>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+        <% end %>
+        <%# ここまでエラ-メッセージ　%>
+
 			  <p class ="form-title">タイトル</p>
   			<span class="form-a"><%= f.text_field :title %></span>
   			<p class ="form-title">説明文</p>
   			<span class="form-a"><%= f.text_area :caption %></span>
-  			<p class ="form-title">書誌ID</p>
-  			<span class="form-a"><%= f.text_area :image_url %></span><br>
+
+  			<p class ="form-title">書誌ISBNコード（-不要）</p>
+          <div class="input-group">
+            <div class="group" id="get-book">
+              <input type="text" id="isbn" class="form-control" placeholder="ISBNを入力して下さい">
+            </div>
+            <div class="input-group-text">
+            <span class="btn-sm p-0" id="getBookInfo">
+              <span class="oi oi-magnifying-glass" title="書籍検索" aria-hidden="true"></span>
+            </span>
+            </div>
+          </div>
+    <% if @book.errors.messages[:bookisbn].any? %>
+        <span class="font-weight-bold text-warning"><%= @book.errors.messages[:bookisbn][0] %></span>
+    <% end %>
+  			<span class="form-a"><%#= f.text_area :image_url %></span><br>
+
+
   			<%= f.submit '投稿' %>
 		<% end %>
 

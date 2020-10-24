@@ -1,14 +1,17 @@
 <div class="container">
   <div class="row">
   	<div class="col-lg">
-
+      <h4>作品登録</h4>
       <%= form_with(model: @creation, url: person_creations_path(@person)) do |f| %>
+        <%# エラーメッセージ　%>
+        <%= render 'layouts/error_messages', model: f.object %>
 
-			<h4>絵</h4>
+        <%# ここまでエラ-メッセージ　%>
+			<p class="form-title"><strong>絵</strong></p>
   			 <%= f.attachment_field :image %>
-      <h4>その他</h4>
+      <p class="form-title"><strong>その他</strong></p>
          <%= f.attachment_field :cartoon %>
-  		<h4>説明文</h4>
+  		<p class="form-title"><strong>説明文</strong></p>
   			<%= f.text_area :caption %>
   			<%= f.submit '投稿' %>
 		<% end %>

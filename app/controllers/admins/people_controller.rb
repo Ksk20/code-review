@@ -1,6 +1,8 @@
 class Admins::PeopleController < ApplicationController
+	before_action :authenticate_admin!
 	def index
 		@people = Person.all
+		#@people = Person.all.order(:name)
 
 	end
 

@@ -1,24 +1,32 @@
-# README
+# Numare
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+歴史上人物ごとに、オススメする本の登録と創作物を投稿できるSNSサイトです。
+一人の偉人に対して、（偉人を登録したユーザー本人は勿論それ以外の）登録ユーザー全員が編集出来る仕様となっています。
 
-Things you may want to cover:
+### サイトテーマ
+偉人に興味を持つきっかけを作り、そこから更に調べたい時は何から読めばいいかわかるページを作る。
 
-* Ruby version
+### テーマを選んだ理由
+自分が好きな歴史上の人物を知り合いの歴史好きに勧めたかったが、史料が論文などしか無く、WIKIもその時代を知らない人には難しくわかりづらいという経験があった。
+逆に勧められた時も、時代や地域が違うとなかなか取っ付き難いものがあった。そういったことから、もっと気軽に偉人に興味を持つきっかけとなるサイトを作りたいと考えていたため。
 
-* System dependencies
+### ターゲットユーザ
+<歴史好き、歴史創作をしている人>
 
-* Configuration
+### 主な利用シーン
+<自分が読んだ本で初心者が入りやすい本、調べるのに役立ちそうな本を登録する。またその偉人の創作物があった場合、誰でも投稿できる。
 
-* Database creation
+## 設計書
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1bQ_gKZLCyf-OIwWPZt1BmV2Paz3eVXKlaQGNKuBJuTI/edit?usp=sharing
+## 開発環境
+- OS：MAC
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- 仮想環境：Vagrant
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   scope module: 'customers' do
     resources :customers, only:[:edit, :update, :destroy, :show]
     get 'customer/destruction'=> "customers#destruction"
+    resources :notifications, only: [:index, :destroy]
     resources :people, only:[:index, :create, :show, :edit, :update, :new] do
       resources :portraits, only:[:index, :create, :destroy]
       resources :creations, only:[:new,:index, :create, :edit, :update, :destroy]

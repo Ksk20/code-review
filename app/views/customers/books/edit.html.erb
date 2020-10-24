@@ -3,7 +3,16 @@
     <div class="col-lg">
       <h4><mark>史料情報編集</mark></h4>
       <%= form_with(model: @book , url: person_book_path(@person)) do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
+        <%# エラーメッセージ　%>
+        <% if @book.errors %>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+        <% end %>
+        <%# ここまでエラ-メッセージ　%>
+
         <p class ="form-title">タイトル</p>
         <span class="form-a"><%= f.text_field :title %></span>
         <p class ="form-title">説明文</p>

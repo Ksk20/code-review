@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg">
+        	<h4><mark>通知</mark></h4>
+        	    <%= link_to notification_path(@notifications), method: :delete do %>
+        	        <i class="fas fa-trash" style="color: black;"></i>
+        	        <h7 style="color: black;">全削除</h7>
+        	    <% end %>
+        	    <hr>
+        	<% if @notifications.exists? %>
+        	    <div class="customers-index">
+        	        <%= render @notifications %>
+        	    </div>
+        	<% else %>
+        	    <p>通知はありません</p>
+			<% end %>
+		</div>
+	</div>
+</div>

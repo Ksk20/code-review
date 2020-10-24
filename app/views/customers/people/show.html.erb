@@ -13,7 +13,7 @@
               <%= render 'layouts/error_messages', model: f.object %>
               <%= f.attachment_field :image %>
               <p class="portrait_add_btn">
-            <%= f.submit '肖像画を追加する', class: "btn" %></p>
+            <%= f.submit '肖像画を追加する', class: "btn" %></p><%= flash[:notice] %>
             <% end %>
           </td>
         </tr>
@@ -85,7 +85,13 @@
                   <% if current_customer != nil && book.customer.id == current_customer.id %>
                   <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete %><% end %>
               </td>
-              <td><%= book.image_url %>
+              <td>
+
+                <%# if book.image_url? %>
+                    <%#= image_tag book, :image_url, class: "book-images-cover", style:"height:200px; width: 150px;" %>
+                  <%# else %>
+                    <%#= image_tag '/images/no_image.jpg', size: '150x150' %>
+                <%# end %>
               </td>
             </tr>
           <% end %>

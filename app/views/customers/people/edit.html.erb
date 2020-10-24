@@ -6,6 +6,9 @@
 
 
           <%= form_for(@person) do |f| %>
+             <%# ここからエラーメッセージ %>
+             <%= render 'layouts/error_messages', model: f.object %>
+             <%# ここまでエラーメッセージ %>
               <p class="form-title">フリガナ（全角カタカナ）</p>
               <span class="form-a"><%= f.text_field :name_kana %></span>
               <p class ="form-title">別名</p>

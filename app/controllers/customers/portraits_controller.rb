@@ -12,7 +12,7 @@ class Customers::PortraitsController < ApplicationController
 	     flash[:notice] = "肖像画が登録されました."
 	     redirect_to person_path(@person.id)
 	  else
-	     render 'customers/people/show'
+	     redirect_to person_path(@person.id)
 	  end
 	end
 

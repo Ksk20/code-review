@@ -27,6 +27,11 @@
             <li class='navbox'>
              <%= link_to 'マイページ', customer_path(current_customer.id), class:"" %></li>
             <li class='navbox'>
+              <% if unchecked_notifications.any? %>
+                <i class="fa fa-circle" style="color: gold;"></i>
+              <% end %>
+              <%= link_to "通知", notifications_path, class:"btn-default" %></li>
+            <li class='navbox'>
               <%= link_to "偉人一覧", people_path, class:"" %></li>
             <li class='navbox'>
               <%= link_to "ログアウト", destroy_customer_session_path, class:"", method: :delete %>

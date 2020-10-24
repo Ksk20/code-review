@@ -5,8 +5,11 @@ class Customers::FavoritesController < ApplicationController
     		favorite = current_customer.favorites.new(book_id: book.id)
 
     		favorite.save
-    		redirect_to person_path(params[:person_id])
+            book.create_notification_by(current_customer)
+            redirect_to person_path(params[:person_id])
+
 	end
+
 
 	def destroy
 			book = Book.find(params[:book_id])

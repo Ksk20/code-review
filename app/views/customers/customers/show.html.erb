@@ -6,9 +6,13 @@
     </div>
     <div class="row">
       <div class="col-sm-2" style=""><h4><strong>登録情報</strong></h4></div>
+      <!-- 退会、編集、パス変更　-->
+      <% if current_customer != nil && @customer.id == current_customer.id %>
         <div class="col-sm-1" style=""><%= link_to '編集する', edit_customer_path, class: 'btn' %></div>
         <div class="col-sm-1" style=""><%= link_to 'パスワードを変更する', "#", class: 'btn' %></div>
         <div class="col-sm-1" style="margin-left: 83px; margin-bottom: 10px;"><%= link_to '退会する', customer_destruction_path, class: 'btn edit_btn' %></div>
+      <% end %>
+      <!-- 退会、編集、パス変更終了　-->
     </div>
     <div class="row">
      <div class="col-sm-8 " style="">
@@ -49,16 +53,16 @@
   <tbody>
     <tr>
       <th>
-            <%= link_to book.person.name, person_path(book.person.id) %>
+            <%#= link_to book.person.name, person_path(book.person.id) %>
 
       </th>
       <td><%= book.title%></td>
       <td><%= book.caption %></td>
       <td>
-        <% if book.customer.id == current_customer.id %>
+        <% if current_customer != nil && book.customer.id == current_customer.id %>
           <%= link_to "編集する", edit_person_book_path(person_id: book.person_id, id: book.id) %>
         <% end %>
-        <% if book.customer.id == current_customer.id %>
+        <% if current_customer != nil && book.customer.id == current_customer.id %>
           <%= link_to "消去", person_book_path(person_id: book.person_id, id: book.id), method: :delete %>
         <% end %>
       </td>
@@ -68,7 +72,7 @@
   </table>
   </div>
   <div class="tab-pane" id="tabB">
-    <p>
+    <p style="margin-top: 15px;">
       <% @portraits.each do |portrait| %>
 
           <%= attachment_image_tag portrait, :image, :fill, 100, 100 %>
@@ -90,14 +94,14 @@
   <% @like_books.each do |book| %>
   <tbody>
     <tr>
-      <th><%= link_to book.person.name, person_path(book.person.id) %></th>
+      <th><%#= link_to book.person.name, person_path(book.person.id) %></th>
       <td><%= book.title%></td>
       <td><%= book.caption %></td>
       <td>
-        <% if book.customer_id == current_customer.id %>
+        <% if current_customer != nil && book.customer_id == current_customer.id %>
           <%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book) %>
         <% end %>
-        <% if book.customer_id == current_customer.id %>
+        <% if current_customer != nil && book.customer_id == current_customer.id %>
           <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete %>
         <% end %>
       </td>
