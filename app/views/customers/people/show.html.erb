@@ -3,7 +3,7 @@
   	<div class="col-lg-12">
       <table>
         <tr>
-          <td>
+          <td style="padding-top: 10px">
             <% @person.portraits.each do |portrait| %>
              <%= attachment_image_tag portrait, :image, :fill, 120, 120 %>
             <% end %>
@@ -22,6 +22,7 @@
   </div>
   <div class="row">
     <div class="col-lg-9">
+      <div class="portrait-caption">
       <table>
         <tr>
           <td>
@@ -37,6 +38,7 @@
       <p>【人物説明】<br><span class="introduction"><%= @person.introduction %></span><br>
          <%= link_to "偉人情報を編集する", edit_person_path(@person.id),class: "btn edit_btn"%>
       </p>
+    </div>
 
 <%# ここから史料欄　%>
 
@@ -50,7 +52,7 @@
             <thead>
               <tr>
                 <th>タイトル</th>
-                <th>紹介文</th>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -59,11 +61,11 @@
             <% @books.each do |book| %>
             <tbody>
             <tr>
-              <th><%= book.title%></th>
-              <td><%= book.caption %></td>
+              <td><strong><%= book.title%></strong><br><%= book.caption %></td>
+              <td></td>
               <td>
   <%# ここからいいねボタン%>
-                  <div class="fav"  style="width: 100px;">
+                  <div class="fav" style="width: 100px;">
                   <% if current_customer != nil %>
                   <% if book.favorited_by?(current_customer) %>
 　　　　　　　　　　　  <%= link_to person_book_favorite_path(person_id: params[:id], book_id: book), method: :delete do %>
@@ -77,8 +79,6 @@
 　　　　　　　　　　　  <% end %>
 　　　　　　　　　　　<% end %>
                   <% end %>
-                </td>
-                <td>
   <%# ここから史料編集ボタン %>
                  <% if current_customer != nil && book.customer.id == current_customer.id %>
                   <span style="width: 10px"><%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book) %></span><% end %>
@@ -86,12 +86,17 @@
                   <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete %><% end %>
               </td>
               <td>
+  <%# ここからAPI記述 %>
+              <section class="book-images-frame">
 
-                <%# if book.image_url? %>
-                    <%#= image_tag book, :image_url, class: "book-images-cover", style:"height:200px; width: 150px;" %>
-                  <%# else %>
-                    <%#= image_tag '/images/no_image.jpg', size: '150x150' %>
-                <%# end %>
+                <% if book.image_url? %>
+                    <%= image_tag book.image_url, class: "book-images-cover", style:"height:200px; width: 150px;" %>
+                  <% else %>
+                    <%= image_tag '/images/no_image.jpg', size: '150x150' %>
+                <% end %>
+
+              </section>
+  <%# ここまでAPI記述 %>
               </td>
             </tr>
           <% end %>
@@ -101,24 +106,27 @@
 <%# ここまで史料欄　%>
 
     <div class="col-lg-3 creation">
-      <h3>作品</h3>
+      <div class="creation-title">
+        <h3>作品</h3>
+      </div>
       <table>
         <% @person.creations.each do |creation| %>
         <tr>
-          <td><%= attachment_image_tag creation, :image, :fill, 126, 100 %>
+          <td><%= attachment_image_tag creation, :image, :fill, 250, 100 %>
+            <br>投稿者　<%= link_to creation.customer.name, customer_path(creation.customer.id) %>
+
           </td>
         </tr>
         <tr>
           <td><%= creation.caption %>
           </td>
-          <td><%= link_to creation.customer.name, customer_path(creation.customer.id) %>
         </tr>
         <tr>
           <td><% if current_customer != nil && creation.customer.id == current_customer.id %>
-              <%= link_to "編集する", edit_person_creation_path(@person, creation ), class: "btn btn-default" %>
+              <%= link_to "編集する", edit_person_creation_path(@person, creation ), class: "" %>
               <% end %>
               <% if current_customer != nil && creation.customer.id == current_customer.id %>
-              <%= link_to "消去", person_creation_path(@person, creation), method: :delete, class: "btn btn-default" %>
+              <%= link_to "消去", person_creation_path(@person, creation), method: :delete, class: "" %>
               <% end %>
           </td>
         </tr>

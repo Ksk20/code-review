@@ -13,40 +13,35 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="color #232323">
-<header class="navbar navbar-fixed-top" style="background: #f8f5f2" >
+  <body>
+<header class="navbar navbar-fixed-top " style="background: #f8f5f2" >
   <div class="container">
 
-      <nav class="nav navbar-nav navbar-left">
+      <nav class="nav navbar-nav navbar-left ">
             <h3 class="navbar-brand" >
               <%= link_to image_tag("/images/logo.png", class: "logo" ,size: '95x95'), home_path %>
             </h3>
             <% if customer_signed_in? %>
-            <li class='navbox'>
-              <%= link_to "使い方", how_to_use_path, class:"" %></li>
             <li class='navbox'>
              <%= link_to 'マイページ', customer_path(current_customer.id), class:"" %></li>
             <li class='navbox'>
               <% if unchecked_notifications.any? %>
                 <i class="fa fa-circle" style="color: gold;"></i>
               <% end %>
-              <%= link_to "通知", notifications_path, class:"btn-default" %></li>
+              <%= link_to "通知", notifications_path %></li>
             <li class='navbox'>
               <%= link_to "偉人一覧", people_path, class:"" %></li>
             <li class='navbox'>
-              <%= link_to "ログアウト", destroy_customer_session_path, class:"", method: :delete %>
-            <li class='navbox'>
+              <%= link_to "ログアウト", destroy_customer_session_path, class:"", method: :delete %></li>
             <% elsif  admin_signed_in? %>
             <li class='navbox'>
               <%= link_to '登録者一覧', admins_customers_path, class:"" %></span></li>
             <li class='navbox'>
               <%= link_to '偉人一覧', admins_people_path, class:"" %></span></li>
             <li class='navbox'>
-              <%= link_to "ログアウト", destroy_admin_session_path, class:"", method: :delete %>
-            <li class='navbox'>
+              <%= link_to "ログアウト", destroy_admin_session_path, class:"", method: :delete %></li>
+
             <% else %>
-            <li class='navbox'>
-              <%= link_to "使い方", how_to_use_path, class:"" %></li>
             <li class='navbox'>
               <%= link_to '人物一覧', people_path , class:"" %></span></li>
             <li class='navbox' style="margin-top: 12px; margin-left: 8px;" >
@@ -58,11 +53,12 @@
       </nav>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          <%= link_to "偉人登録", new_person_path, class:"btn-circle-border-double" %></li>
+          <strong><%= link_to "偉人登録", new_person_path, class:"btn-circle-border-double" %></strong></li>
         </ul>
 
       </nav>
     </div>
+
   </header>
 
     <%= yield %>

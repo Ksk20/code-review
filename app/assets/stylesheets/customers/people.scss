@@ -27,10 +27,16 @@ a.btn.edit_btn {
     margin-top: -6px;
 }
 div.col-lg-3.creation{
-	background: #f8f5f2;
-	padding: 10px;
+    padding: 0.5em 1em;
+    color: #232323;
+    background: #f8f5f2;/*背景色*/
+    border-left: double 7px #078080;/*左線*/
+    border-right: double 7px #078080;/*右線*/
 }
-
+div.col-lg-3.creation p{
+    margin: 0;
+    padding: 0;
+}
 h4:first-letter {
   font-size: 2em;
   color: #078080;
@@ -38,4 +44,10 @@ h4:first-letter {
 p.form-title{
 	margin-top: 10px;
 }
-
+.portrait-caption{
+	background: #f8f5f2;
+	width: 100%;
+	padding: 20px;
+	color: f45d48;
+	border-radius: 10px;
+}

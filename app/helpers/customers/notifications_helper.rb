@@ -6,7 +6,7 @@ module Customers::NotificationsHelper
 
       case notification.action
         when "favorite" then
-        	tag.a(notification.visitor.name, href: customer_path(@visitor)) + 'が' + tag.a('あなたの投稿', href: "#") + 'にいいねしました'
+        	tag.a(notification.visitor.name, href: customer_path(@visitor)) + 'があなたの投稿にいいねしました'
       end
     end
 

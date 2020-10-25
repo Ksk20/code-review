@@ -1,12 +1,61 @@
 <div class="container">
   <div class="row">
-  	<div class="col-lg">
-      <h4><mark>新規史料登録</mark></h4>
+    <div class="col-lg">
 
 
+  <mark><p id="title-search"><strong>資料情報検索</strong><p></mark>
+
+    <div class="result">
+        <div class = "panel-title">
+
+    <div>
+        ISBN13：<input id="isbn" type="text" name="isbn" value="" autofocus>
+        <button id="getBookInfo" class="btn btn-default">書籍情報取得</button>
+    </div>
+
+    <div>
+        <p id="thumbnail"></p>
+    </div>
+
+    <div>
+        書籍名：<span id="title"></span>
+    </div>
+
+    <div>
+        出版社：<span id="publisher"></span>
+    </div>
+
+    <div>
+        巻：<span id="publisher"></span>
+    </div>
+
+    <div>
+        シリーズ：<span id="series"></span>
+    </div>
+
+    <div>
+        著者：<span id="author"></span>
+    </div>
+
+    <div>
+        出版日：<span id="author"></span>
+    </div>
+
+    <div>
+        サムネイルURI：<span id="cover"></span>
+    </div>
+
+    <div>
+        詳細：<span id="description"></span>
+    </div>
+
+        </div>
+      </div>
 
 
-  		<%= form_with(model: @book, url: person_books_path(@person)) do |f| %>
+    <h4><mark><strong>新規史料登録</strong></mark></h4>
+    <div class="result-image">
+      <%= form_with(model: @book, id:"form-result", url: person_books_path(@person)) do |f| %>
 
         <%# エラーメッセージ　%>
         <% if @book.errors %>
@@ -18,31 +67,20 @@
         <% end %>
         <%# ここまでエラ-メッセージ　%>
 
-			  <p class ="form-title">タイトル</p>
-  			<span class="form-a"><%= f.text_field :title %></span>
-  			<p class ="form-title">説明文</p>
-  			<span class="form-a"><%= f.text_area :caption %></span>
+        <p class ="form-title">タイトル、著者名、出版社</p>
+        <span class="form-a"><%= f.text_field :title ,id: "book-name" %></span>
 
-  			<p class ="form-title">書誌ISBNコード（-不要）</p>
-          <div class="input-group">
-            <div class="group" id="get-book">
-              <input type="text" id="isbn" class="form-control" placeholder="ISBNを入力して下さい">
-            </div>
-            <div class="input-group-text">
-            <span class="btn-sm p-0" id="getBookInfo">
-              <span class="oi oi-magnifying-glass" title="書籍検索" aria-hidden="true"></span>
-            </span>
-            </div>
-          </div>
-    <% if @book.errors.messages[:bookisbn].any? %>
-        <span class="font-weight-bold text-warning"><%= @book.errors.messages[:bookisbn][0] %></span>
+        <p class ="form-title">サムネイルURL</p>
+        <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,type:"hidden", hide_label:"true" %></span>
+        <p class ="form-title">感想</p>
+        <span class="form-a"><%= f.text_area :caption ,id: "caption" %></span>
+
+
+        <%= f.submit '投稿' %>
     <% end %>
-  			<span class="form-a"><%#= f.text_area :image_url %></span><br>
+  </div>
 
 
-  			<%= f.submit '投稿' %>
-		<% end %>
-
-	</div>
+  </div>
   </div>
  </div>
