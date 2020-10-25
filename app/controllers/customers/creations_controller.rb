@@ -41,7 +41,7 @@ class Customers::CreationsController < ApplicationController
 	end
 
 	def destroy
-		person = Person.find(params[:id])
+		person = Person.find(params[:person_id])
 		@creation = Creation.find(params[:id])
   		@creation.destroy
   			redirect_to person_path(person.id)
