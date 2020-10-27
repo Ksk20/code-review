@@ -1,13 +1,11 @@
 class Customers::FavoritesController < ApplicationController
 	def create
 		    book = Book.find(params[:book_id])
-
-    		favorite = current_customer.favorites.new(book_id: book.id)
-
+    		#favorite = current_customer.favorites.new(book_id: book.id, favorited_customer_id: book.customer_id)
+            favorite = current_customer.favorites.new(book_id: book.id)
     		favorite.save
             book.create_notification_by(current_customer)
             redirect_to person_path(params[:person_id])
-
 	end
 
 
