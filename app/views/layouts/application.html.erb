@@ -5,50 +5,50 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/fe584cea55.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-<header class="navbar navbar-fixed-top " style="background: #f8f5f2" >
+  <header class="navbar navbar-fixed-top" >
   <div class="container">
 
       <nav class="nav navbar-nav navbar-left ">
-            <h3 class="navbar-brand" >
-              <%= link_to image_tag("/images/logo.png", class: "logo" ,size: '95x95'), home_path %>
-            </h3>
-            <% if customer_signed_in? %>
+        <h3 class="navbar-brand" >
+          <%= link_to image_tag("/images/logo.png", class: "logo" ,size: '95x95'), home_path %>
+        </h3>
+        <% if customer_signed_in? %>
             <li class='navbox'>
              <%= link_to 'マイページ', customer_path(current_customer.id), class:"" %></li>
             <li class='navbox'>
               <% if unchecked_notifications.any? %>
-                <i class="fa fa-circle" style="color: gold;"></i>
+                <i class="fa fa-circle"></i>
               <% end %>
-              <%= link_to "通知", notifications_path %></li>
+              <%= link_to "通知", notifications_path , class:"for_up" %>
+            </li>
             <li class='navbox'>
               <%= link_to "偉人一覧", people_path, class:"" %></li>
             <li class='navbox'>
               <%= link_to "ログアウト", destroy_customer_session_path, class:"", method: :delete %></li>
-            <% elsif  admin_signed_in? %>
+        <% elsif  admin_signed_in? %>
             <li class='navbox'>
               <%= link_to '登録者一覧', admins_customers_path, class:"" %></span></li>
             <li class='navbox'>
               <%= link_to '偉人一覧', admins_people_path, class:"" %></span></li>
             <li class='navbox'>
               <%= link_to "ログアウト", destroy_admin_session_path, class:"", method: :delete %></li>
-
-            <% else %>
+        <% else %>
             <li class='navbox'>
-              <%= link_to '人物一覧', people_path , class:"" %></span></li>
+              <%= link_to '人物一覧', people_path , class:"" %></li>
             <li class='navbox' style="margin-top: 12px; margin-left: 8px;" >
-             <span style="color: #f45d48;"><%= link_to "新規登録", new_customer_registration_path, class:"s-button" %></span></li>
+              <span><%= link_to "新規登録", new_customer_registration_path, class:"s-button" %>
+              </span>
+            </li>
             <li class='navbox' style="color: #fffffe; margin-top: 12px; margin-left: 10px;" >
-              <span style="color: #fffffe"><%= link_to "ログイン", new_customer_session_path, class:"l-button"%></span></li>
-            <% end %>
+              <span><%= link_to "ログイン", new_customer_session_path, class:"l-button"%>
+              </span>
+            </li>
+        <% end %>
 
       </nav>
       <nav>

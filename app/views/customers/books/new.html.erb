@@ -3,57 +3,54 @@
     <div class="col-lg">
 
 
-  <mark><p id="title-search"><strong>資料情報検索</strong><p></mark>
+ 　　<mark><p id="title-search"><strong>資料情報検索</strong><p></mark>
+ 　　  <div class="result">
+ 　　    <div class = "panel-title">
+ 　　      <div>ISBN13：<input id="isbn" type="text" name="isbn" value="" autofocus>
+ 　　        <button id="getBookInfo" class="btn btn-default">書籍情報取得</button>
+ 　　      </div>
 
-    <div class="result">
-        <div class = "panel-title">
+ 　　      <div>
+ 　　          <p id="thumbnail"></p>
+ 　　      </div>
 
-    <div>
-        ISBN13：<input id="isbn" type="text" name="isbn" value="" autofocus>
-        <button id="getBookInfo" class="btn btn-default">書籍情報取得</button>
-    </div>
+ 　　      <div>
+ 　　          書籍名：<span id="title"></span>
+ 　　      </div>
 
-    <div>
-        <p id="thumbnail"></p>
-    </div>
+ 　　      <div>
+ 　　          出版社：<span id="publisher"></span>
+ 　　      </div>
 
-    <div>
-        書籍名：<span id="title"></span>
-    </div>
+ 　　      <div>
+ 　　        巻：<span id="publisher"></span>
+ 　　      </div>
 
-    <div>
-        出版社：<span id="publisher"></span>
-    </div>
+ 　　      <div>
+ 　　          シリーズ：<span id="series"></span>
+ 　　      </div>
 
-    <div>
-        巻：<span id="publisher"></span>
-    </div>
+ 　　      <div>
+ 　　          著者：<span id="author"></span>
+ 　　      </div>
 
-    <div>
-        シリーズ：<span id="series"></span>
-    </div>
+ 　　      <div>
+ 　　          出版日：<span id="author"></span>
+ 　　      </div>
 
-    <div>
-        著者：<span id="author"></span>
-    </div>
+    　     <div>
+    　          サムネイルURI：<span id="cover"></span>
+    　     </div>
 
-    <div>
-        出版日：<span id="author"></span>
-    </div>
+    　     <div>
+    　　     詳細：<span id="description"></span>
+           </div>
 
-    <div>
-        サムネイルURI：<span id="cover"></span>
-    </div>
-
-    <div>
-        詳細：<span id="description"></span>
-    </div>
-
-        </div>
-      </div>
-
+         </div>
+       </div>
 
     <h4><mark><strong>新規史料登録</strong></mark></h4>
+
     <div class="result-image">
       <%= form_with(model: @book, id:"form-result", url: person_books_path(@person)) do |f| %>
 
@@ -67,20 +64,21 @@
         <% end %>
         <%# ここまでエラ-メッセージ　%>
 
-        <p class ="form-title">タイトル、著者名、出版社</p>
-        <span class="form-a"><%= f.text_field :title ,id: "book-name" %></span>
-
+        <p class ="form-title">タイトル、著者名、出版社
+        </p>
+        <span class="form-a"><%= f.text_field :title ,id: "book-name" %>
+        </span>
         <p class ="form-title">サムネイルURL</p>
         <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,type:"hidden", hide_label:"true" %></span>
         <p class ="form-title">感想</p>
-        <span class="form-a"><%= f.text_area :caption ,id: "caption" %></span>
-
+        <span class="form-a"><%= f.text_area :caption ,id: "caption" %>
+        </span>
 
         <%= f.submit '投稿' %>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
 
+    </div>
   </div>
-  </div>
- </div>
+</div>

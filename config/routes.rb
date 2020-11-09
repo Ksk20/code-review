@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :customers, controllers: {
   	sessions: 'customers/sessions',
-    registrations: 'customers/registrations',
-    passwords: 'customers/passwords'
+    registrations: 'customers/registrations'
   }
+ #上はデバイスのコントローラのカスタマイズ
+
 
   get '/' => "customers/homes#top", as: 'home'
   get 'homes/about' => "customers/homes#about",as: 'about'

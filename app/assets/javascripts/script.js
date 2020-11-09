@@ -1,6 +1,6 @@
 // オプションを指定してSkipprの実行
-$('document').ready(function() {
-  $(".theTarget").skippr({
+$(document).on('turbolinks:load', function() {
+$(".theTarget").skippr({
     // スライドショーの変化（"fade" or "slide"）
     transition : 'fade',
     // 変化にかかる時間（ミリ秒）
@@ -22,4 +22,4 @@ $('document').ready(function() {
     // 1枚目のスライド表示時に戻る矢印を表示するかどうか [false]:矢印を隠さない [true]:矢印を隠す
     hidePrevious : false
   });
-});
+ });
