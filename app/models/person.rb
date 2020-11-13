@@ -7,8 +7,7 @@ class Person < ApplicationRecord
   	validates :name, presence:true
   	validates :name_kana,format: {
                    with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-                   message: "全角カタカナのみで入力して下さい",
-                   allow_blank: true
+                   message: "全角カタカナのみで入力して下さい"
                  }
     validates :birth, numericality: { only_integer: true }, allow_blank: true
     validates :death, numericality: { only_integer: true }, allow_blank: true

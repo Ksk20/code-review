@@ -5,7 +5,7 @@ class Customers::PeopleController < ApplicationController
 	end
 
 	def index
-	  @people = Person.all
+	  @people = Person.order(:name_kana)
 	end
 
 	def show

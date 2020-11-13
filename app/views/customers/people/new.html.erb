@@ -1,17 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-ig-12">
-      <h4><mark>偉人登録</mark></h4>
+
+      <h4><mark>偉人登録</mark>
+        <span class="attention">（※マークは入力必須項目です）</span>
+      </h4>
+
       <%= form_for(@person) do |f| %>
 
       <%# ここからエラーメッセージ %>
       <%= render 'layouts/error_messages', model: f.object %>
       <%# ここまでエラーメッセージ %>
 
-        <p class="form-title">名前</p>
+        <p class="form-title">※名前</p>
             <span class="form-a"><%= f.text_field :name %>
             </span>
-             <p class="form-title">フリガナ（全角カタカナ）</p>
+             <p class="form-title">※フリガナ（全角カタカナ）</p>
               <span class="form-a"><%= f.text_field :name_kana %></span>
               <p class ="form-title">別名</p>
               <span class="form-a"><%= f.text_field :alias %></span>

@@ -51,3 +51,29 @@ p.form-title{
 	color: f45d48;
 	border-radius: 10px;
 }
+.column{
+   column-count: 4;
+}
+
+ul {
+  list-style: none;
+}
+li.people-list{
+	margin-top: 3%;
+	padding: 1.5%;
+	background: #f8f5f2;
+	border-radius: 5px;
+
+}
+
+a#people_name{
+	font-size: 110%;
+	color: #078080;
+	text-decoration : underline;
+	border-bottom: 2px;
+	margin-left: 20%;
+}
+
+span.attention{
+	font-size: 70%;
+}
