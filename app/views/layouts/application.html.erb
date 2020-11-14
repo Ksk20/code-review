@@ -40,11 +40,11 @@
         <% else %>
             <li class='navbox'>
               <%= link_to '人物一覧', people_path , class:"" %></li>
-            <li class='navbox' style="margin-top: 12px; margin-left: 8px;" >
+            <li class='navbox new_button' >
               <span><%= link_to "新規登録", new_customer_registration_path, class:"s-button" %>
               </span>
             </li>
-            <li class='navbox' style="color: #fffffe; margin-top: 12px; margin-left: 10px;" >
+            <li class='navbox login_button' >
               <span><%= link_to "ログイン", new_customer_session_path, class:"l-button"%>
               </span>
             </li>
