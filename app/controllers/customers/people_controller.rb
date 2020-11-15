@@ -10,8 +10,8 @@ class Customers::PeopleController < ApplicationController
 
 	def show
 		@person = Person.find(params[:id])
-		@books = @person.books.page(params[:page]).per(10)
-
+		@beginners = @person.books.where(grade: 'beginner').page(params[:page]).per(5)
+		@professionals = @person.books.where(grade: 'professional').page(params[:page]).per(5)
 		@creations = @person.creations.page(params[:page]).per(10)
 		@portrait =Portrait.new
 	end

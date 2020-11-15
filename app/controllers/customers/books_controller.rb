@@ -44,12 +44,19 @@ class Customers::BooksController < ApplicationController
 	def destroy
      @book = Book.find(params[:id])
      @book.destroy
-     redirect_to person_path(params[:person_id])
+     if params[:customer_id].present?
+      @customer = Customer.find(params[:customer_id])
+      redirect_to @customer
+      return
+     else
+      redirect_to person_path(params[:person_id])
+      return
+     end
 	end
 
 private
 	def book_params
-    	params.require(:book).permit(:title,:caption,:image_url,:person_id,:customer_id)
+    	params.require(:book).permit(:title,:caption,:image_url,:person_id,:customer_id,:grade)
   	end
   def correct_customer
    @book = current_customer.books.find_by(id: params[:id])

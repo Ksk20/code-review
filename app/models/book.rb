@@ -1,11 +1,12 @@
 class Book < ApplicationRecord
 	belongs_to :customer
-	belongs_to :person
+	belongs_to :person, optional: true
 	has_many :favorites, dependent: :destroy
 	has_many :notifications, dependent: :destroy
 
 	validates :title, presence:true
 	validates :caption, presence:true
+  validates :grade, presence:true
 
 	def favorited_by?(customer)
 		favorites.where(customer_id: customer.id).exists?

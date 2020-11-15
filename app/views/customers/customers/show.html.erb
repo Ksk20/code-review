@@ -43,27 +43,27 @@
     <table class="table table-striped">
     <thead>
     <tr>
-      <th></th>
+      <th>偉人名</th>
       <th>タイトル</th>
-      <th>説明文</th>
+      <th>感想/説明</th>
       <th></th>
     </tr>
   </thead>
   <% @books.each do |book| %>
   <tbody>
     <tr>
-      <th>
-            <%#= link_to book.person.name, person_path(book.person.id) %>
-
+      <th><% if book.person_id != nil %>
+            <%= link_to book.person.name, person_path(book.person.id) %>
+          <% end %>
       </th>
       <td><%= book.title%></td>
       <td><%= book.caption %></td>
       <td>
-        <% if current_customer != nil && book.customer.id == current_customer.id %>
+        <% if current_customer != nil && book.customer.id == current_customer.id && book.person_id != nil %>
           <%= link_to "編集する", edit_person_book_path(person_id: book.person_id, id: book.id) %>
         <% end %>
         <% if current_customer != nil && book.customer.id == current_customer.id %>
-          <%= link_to "消去", person_book_path(person_id: book.person_id, id: book.id), method: :delete %>
+          <%= link_to "消去", book_path(id: book.id, customer_id: book.customer.id), method: :delete, data: { confirm: 'are you sure?'} %>
         <% end %>
       </td>
     </tr>

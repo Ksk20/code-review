@@ -26,17 +26,18 @@ a.btn.edit_btn {
     border-width: 3px;
     margin-top: -6px;
 }
-div.col-lg-3.creation{
+.col-lg-3.creation{
     padding: 0.5em 1em;
     color: #232323;
     background: #f8f5f2;/*背景色*/
     border-left: double 7px #078080;/*左線*/
     border-right: double 7px #078080;/*右線*/
 }
-div.col-lg-3.creation p{
+/* div.col-lg-3.creation p{
     margin: 0;
     padding: 0;
-}
+} */
+
 h4:first-letter {
   font-size: 2em;
   color: #078080;
@@ -80,6 +81,25 @@ a#people_name{
 	margin-left: 20%;
 }
 
-span.attention{
+.attention{
 	font-size: 70%;
+}
+
+.ISBN_search{
+	font-size: 16px;
+}
+
+.ISBN_input{
+	margin-bottom: -20px;
+}
+
+.book__topic{
+	font-size: 14px;
+	margin-bottom: -1%;
+}
+.book__topic.bottom{
+	margin-bottom: 3%;
+	}
+.grade_radio_button{
+	margin-bottom: 1.5%;
 }

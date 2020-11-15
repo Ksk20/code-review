@@ -3,8 +3,8 @@
     <div class="col-lg">
 
 
- 　　<mark><p id="title-search"><strong>資料情報検索</strong><p></mark>
  　　  <div class="result">
+        <strong class="ISBN_search" id="title-search">資料情報検索</strong>
  　　    <div class = "panel-title">
 
  　　      <div class="ISBN_input">ISBN13：<input id="isbn" type="text" name="isbn" value="" autofocus>
@@ -12,40 +12,32 @@
             </button>
  　　      </div>
 
- 　　      <div>
+ 　　      <div class="book__topic">
  　　        <p id="thumbnail"></p>
  　　      </div>
 
- 　　      <div class="book__topic">
- 　　        書籍名：<span id="title"></span>
+ 　　      <div class="book__topic">書籍名：<span id="title"></span>
  　　      </div>
 
- 　　      <div class="book__topic">
- 　　        出版社：<span id="publisher"></span>
+ 　　      <div class="book__topic">出版社：<span id="publisher"></span>
  　　      </div>
 
- 　　      <div class="book__topic">
- 　　        巻：<span id="publisher"></span>
+ 　　      <div class="book__topic">巻：<span id="publisher"></span>
  　　      </div>
 
- 　　      <div class="book__topic">
- 　　        シリーズ：<span id="series"></span>
+ 　　      <div class="book__topic">シリーズ：<span id="series"></span>
  　　      </div>
 
- 　　      <div class="book__topic">
- 　　        著者：<span id="author"></span>
+ 　　      <div class="book__topic">著者：<span id="author"></span>
  　　      </div>
 
- 　　      <div class="book__topic">
- 　　        出版日：<span id="author"></span>
+ 　　      <div class="book__topic">出版日：<span id="author"></span>
  　　      </div>
 
-    　     <div class="book__topic">
-    　       サムネイルURI：<span id="cover"></span>
+    　     <div class="book__topic">サムネイルURI：<span id="cover"></span>
     　     </div>
 
-    　     <div class="book__topic">
-    　　     詳細：<span id="description"></span>
+    　     <div class="book__topic bottom">詳細：<span id="description"></span>
            </div>
 
          </div>
@@ -74,8 +66,14 @@
         <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,type:"hidden", hide_label:"true" %></span>
         <p class ="form-title">感想</p>
         <span class="form-a"><%= f.text_area :caption ,id: "caption" %>
-        </span>
-
+        </span><br>
+        <div class="grade_radio_button">
+          <p class ="form-title">本の種類</p>
+          <label>
+            <%= f.radio_button :grade, 'beginner' %> 初心者向け</label>
+          <label>
+            <%= f.radio_button :grade, 'professional' %> その他（中級者以上向け）</label><br>
+        </div>
         <%= f.submit '投稿' %>
       <% end %>
     </div>

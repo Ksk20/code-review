@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
  #上はデバイスのコントローラのカスタマイズ
 
-
+  root to: 'customers/home#top'
   get '/' => "customers/homes#top", as: 'home'
   get 'homes/about' => "customers/homes#about",as: 'about'
   get 'homes/how_to_use' => "customers/homes#how_to_use",as: 'how_to_use'
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :customers, only:[:edit, :update, :destroy, :show]
     get 'customer/destruction'=> "customers#destruction"
     resources :notifications, only: [:index, :destroy]
+    resources :books, only: [:destroy]
     resources :people, only:[:index, :create, :show, :edit, :update, :new] do
       resources :portraits, only:[:index, :create, :destroy]
       resources :creations, only:[:new,:index, :create, :edit, :update, :destroy]
