@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   }
  #上はデバイスのコントローラのカスタマイズ
 
-  root to: 'customers/home#top'
   get '/' => "customers/homes#top", as: 'home'
   get 'homes/about' => "customers/homes#about",as: 'about'
   get 'homes/how_to_use' => "customers/homes#how_to_use",as: 'how_to_use'
