@@ -1,18 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="row">
-     <div class="col-sm-8 text-center" style="">
-      <h4><mark></mark></h4></div>
+     <div class="col-sm-12 text-center" style="">
     </div>
     <div class="row">
       <div class="col-sm-2" style=""><h4><strong>登録情報</strong></h4></div>
       <!-- 退会、編集、パス変更　-->
-      <% if current_customer != nil && @customer.id == current_customer.id %>
+      <div class="button3">
+        <% if current_customer != nil && @customer.id == current_customer.id %>
         <div class="col-sm-1" style=""><%= link_to '編集する', edit_customer_path, class: 'btn' %></div>
-        <div class="col-sm-1" style=""><%= link_to 'パスワードを変更する', edit_customer_registration_path, class: 'btn' %></div>
-        <div class="col-sm-1" style="margin-left: 83px; margin-bottom: 10px;"><%= link_to '退会する', customer_registration_path(@customer.id), class: 'btn edit_btn' %></div>
-      <% end %>
+        <div class="col-sm-2" style=""><%= link_to 'パスワードを変更する', edit_customer_registration_path, class: 'btn' %></div>
+        <div class="col-sm-1" style=""><%= link_to '退会する', customer_registration_path(@customer.id), class: 'btn edit_btn' %></div>
+        <% end %>
+      
+      <div class="col-sm-6" ></div>
+      </div>
       <!-- 退会、編集、パス変更終了　-->
+
     </div>
     <div class="row">
      <div class="col-sm-8 " style="">
@@ -85,16 +89,19 @@
     <table class="table table-striped">
     <thead>
     <tr>
-      <th></th>
+      <th>偉人名</th>
       <th>タイトル</th>
-      <th>説明文</th>
+      <th>感想/説明</th>
       <th></th>
     </tr>
   </thead>
   <% @like_books.each do |book| %>
   <tbody>
     <tr>
-      <th><%#= link_to book.person.name, person_path(book.person.id) %></th>
+      <th><% if book.person_id != nil %>
+            <%= link_to book.person.name, person_path(book.person.id) %>
+          <% end %>
+      </th>
       <td><%= book.title%></td>
       <td><%= book.caption %></td>
       <td>
@@ -102,7 +109,7 @@
           <%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book) %>
         <% end %>
         <% if current_customer != nil && book.customer_id == current_customer.id %>
-          <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete %>
+          <%= link_to "消去", book_path(id: book.id, customer_id: book.customer.id), method: :delete %>
         <% end %>
       </td>
     </tr>

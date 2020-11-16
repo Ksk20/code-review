@@ -26,6 +26,8 @@
               <% end %>
               <%= link_to "通知", notifications_path , class:"for_up" %>
             </li>
+             <li class='navbox'>
+              <%= link_to "使い方", how_to_use_path, class:"" %></li>
             <li class='navbox'>
               <%= link_to "偉人一覧", people_path, class:"" %></li>
             <li class='navbox'>
@@ -38,6 +40,8 @@
             <li class='navbox'>
               <%= link_to "ログアウト", destroy_admin_session_path, class:"", method: :delete %></li>
         <% else %>
+            <li class='navbox'>
+              <%= link_to "使い方", how_to_use_path, class:"" %></li>
             <li class='navbox'>
               <%= link_to '人物一覧', people_path , class:"" %></li>
             <li class='navbox new_button' >

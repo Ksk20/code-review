@@ -19,6 +19,13 @@
         <span class="form-a"><%= f.text_area :caption %></span>
         <p class ="form-title">書誌ID</p>
         <span class="form-a"><%= f.text_area :image_url %></span><br>
+        <div class="grade_radio_button">
+          <p class ="form-title">本の種類</p>
+          <label>
+            <%= f.radio_button :grade, 'beginner' %> 初心者向け</label>
+          <label>
+            <%= f.radio_button :grade, 'professional' %> その他（中級者以上向け）</label><br>
+        </div>
 		      <%= f.submit "編集内容を保存する"%>
         </div>
 	    <% end %>

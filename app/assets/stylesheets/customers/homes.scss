@@ -22,13 +22,15 @@
 .Block2 {
   /*レイアウト用のCSS*/
   padding: 10px 0 40px 0;
-  background-color: #191970;
+  background-color: #078080;
   color: #ccc;
   position: relative;
 }
 .Block1 {
+  background-color: #f45d48;
   position: relative;
   padding: 20px 0 30px 0;
+  color: #f8f5f2;
 
 }
 .Block1::before{
@@ -44,7 +46,7 @@
   必ず幅100vwにして、ブラウザサイズいっぱいにしてください。*/
   border-width: 40px 0 0 100vw ;
 
-  border-color: transparent  transparent  transparent #191970;
+  border-color: transparent  transparent  transparent #078080;
 }
 
 .Block3 {
@@ -68,4 +70,63 @@
   border-width: 0 0 40px 100vw ;
 
   border-color:   transparent  transparent  #232323 transparent ;
+}
+
+.Block4{
+  background-color: #078080;
+  height: 50px;
+}
+
+.how_to_use_top_title.text-center{
+  text-decoration: underline;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.infomation.text-center{
+  margin-bottom: 2%;
+}
+.flex-box{
+  display: flex;
+  margin-bottom: 5%;
+}
+.how1{
+  background-image: image-url("how1.png");
+  width: 500px;
+  height: 250px;
+  border-radius: 10px;
+  background-size: contain;
+}
+
+.how2{
+  background-image: image-url("how2.png");
+  width: 500px;
+  height: 250px;
+  margin-left: 5px;
+  border-radius: 10px;
+  background-size: contain;
+}
+
+.how3{
+  background-image: image-url("how3.png");
+  width: 500px;
+  height: 250px;
+  margin-left: 28%;
+  margin-bottom: 5%;
+  border-radius: 10px;
+  background-size: contain;
+}
+
+.how4{
+  background-image: image-url("how4.png");
+  width: 350px;
+  height: 300px;
+  margin-left: 35%;
+  margin-bottom: 4%;
+  border-radius: 10px;
+  background-size: contain;
+}
+
+.text-center.block4_infomation{
+  padding-top: 10px;
+  font-size: 20px;
 }
