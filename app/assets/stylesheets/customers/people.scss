@@ -2,8 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.top_margin{
+	padding-top: 10px;
+}
 .btn {
 	background: #f45d48;
+	color: #fffffe;
+}
+
+.btn.peoplee_edit_btn {
+	background: #078080;
 	color: #fffffe;
 }
 
@@ -11,6 +19,10 @@
 	background: #078080;
 	color: #fffffe;
 	margin-left: -25%;
+}
+
+.book_add_button{
+	padding-left: 85%;
 }
 
 .button3{

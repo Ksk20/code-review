@@ -1,12 +1,17 @@
 <div class="container">
   <div class="row">
-     <div class="col-lg">
-     	<p>当サイトは個人情報保護の観点から、下記「退会する」ボタンを押した後、登録いただいたユーザー様の情報を保持せず完全に消去いたします。<br>
-     	また退会後、登録頂いた偉人情報のみ残り、その他登録いただいた史料情報、作品情報、肖像画は消去されます。本当に退会しますか？</p>
+    <div class="col-lg-10">
 
-     	<%= link_to '戻る', customer_path(current_customer.id), class: 'btn edit_btn' %>
-     	<%= link_to '退会する', customer_path(current_customer.id), method: :delete ,class: 'btn' %>
-     </div>
+     	当サイトは個人情報保護の観点から、下記「退会する」ボタンを押した後、登録いただいたユーザー様の情報を保持せず完全に消去いたします。<br>
+     	また退会後、登録頂いた偉人情報のみ残り、その他登録いただいた史料情報、作品情報、肖像画は消去されます。本当に退会しますか？
+    </div>
+    <div class="col-lg-2">
+     	<%= link_to '戻る', customer_path(current_customer.id), class: 'btn edit_btn return' %>
+     	<%= link_to '退会する', customer_path(current_customer.id), method: :delete ,class: 'btn taikai' %>
+    </div>
+
+
+
   </div>
 </div>
 

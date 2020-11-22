@@ -5,16 +5,12 @@
 
  　　  <div class="result">
         <strong class="ISBN_search" id="title-search">資料情報検索</strong>
- 　　    <div class = "panel-title">
-
- 　　      <div class="ISBN_input">ISBN13：<input id="isbn" type="text" name="isbn" value="" autofocus>
+ 　　　　<div class = "panel-title">
+          <div class="ISBN_input">ISBN13：<input id="isbn" type="text" name="isbn" value="" autofocus>
             <button id="getBookInfo" class="btn btn-default">書籍情報取得
             </button>
  　　      </div>
-
- 　　      <div class="book__topic">
- 　　        <p id="thumbnail"></p>
- 　　      </div>
+ 　　      <div class="book__topic"><p id="thumbnail"></p></div>
 
  　　      <div class="book__topic">書籍名：<span id="title"></span>
  　　      </div>
@@ -43,6 +39,52 @@
          </div>
        </div>
 
+
+　　  <div class="essay_result">
+        <strong class="NAID_search" id="essay_title-search">論文情報検索</strong>
+ 　　    <div class = "panel-title">
+
+ 　　      <div class="NAID_input">CNII論文ID(NAID)：<input id="naid" type="text" name="naid" value="" autofocus>
+            <button id="getEssayInfo" class="btn btn-default">論文情報取得
+            </button>
+ 　　      </div>
+
+ 　　      <%#<div class="book__topic">
+ 　　        <p id="essay-thumbnail"></p>
+ 　　      </div>%>
+
+ 　　      </div>
+ 　　      <div class="book__topic">論文タイトル：<span id="essay_title"></span>
+ 　　      </div>
+
+ 　　      <div class="book__topic">出版社名：<span id="essay_publisher"></span>
+ 　　      </div>
+　　　　　　<div class="book__topic">刊行物名：<span id="essay_publicationName"></span>
+ 　　      </div>
+
+ 　　      <div class="book__topic">巻：<span id="essay_volume"></span>
+ 　　      </div>
+
+ 　　      <div class="book__topic">号：<span id="essay_number"></span>
+ 　　      </div>
+
+ 　　      <div class="book__topic">著者名：<span id="essay_creator"></span>
+ 　　      </div>
+
+ 　　      <div class="book__topic">出版日：<span id="essay_pubdate"></span>
+ 　　      </div>
+
+    　     <div class="book__topic bottom">抄録：<span id="essay_description"></span>
+           </div>
+
+           <div class="book__topic bottom"> 外部リンクに関する記述：<span id="essay_link"></span>
+           </div>
+
+         </div>
+       </div>
+
+
+
     <h4><mark><strong>新規史料登録</strong></mark></h4>
 
     <div class="result-image">
@@ -60,20 +102,21 @@
 
         <p class ="form-title">タイトル、著者名、出版社
         </p>
-        <span class="form-a"><%= f.text_field :title ,id: "book-name" %>
+        <span class="form-a"><%= f.text_field :title ,id: "book-name" ,size:"100"%>
         </span>
-        <p class ="form-title">サムネイルURL</p>
-        <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,type:"hidden", hide_label:"true" %></span>
+
         <p class ="form-title">感想</p>
-        <span class="form-a"><%= f.text_area :caption ,id: "caption" %>
+        <span class="form-a"><%= f.text_area :caption ,id: "caption" ,size:"100"%>
         </span><br>
         <div class="grade_radio_button">
           <p class ="form-title">本の種類</p>
           <label>
             <%= f.radio_button :grade, 'beginner' %> 初心者向け</label>
           <label>
-            <%= f.radio_button :grade, 'professional' %> その他（中級者以上向け）</label><br>
+            <%= f.radio_button :grade, 'professional' %> その他（中級者以上向け）</label>
         </div>
+        <%# 非表示用サムネイルURL%>
+         <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,style: "visibility: hidden", hide_label:"true" %></span><br>
         <%= f.submit '投稿' %>
       <% end %>
     </div>
