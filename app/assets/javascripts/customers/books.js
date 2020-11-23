@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', function() {
       e.preventDefault();
       const naid = $("#naid").val();
       　$.ajax({
-         url:"http://ci.nii.ac.jp/naid/" + naid + ".rdf",
+         url:"https://ci.nii.ac.jp/naid/" + naid + ".rdf",
          type:'GET',
          dataType : 'xml',
         })
