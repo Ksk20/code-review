@@ -12,6 +12,7 @@ class Customers::PeopleController < ApplicationController
 		@person = Person.find(params[:id])
 		@beginners = @person.books.where(grade: 'beginner').page(params[:page]).per(5)
 		@professionals = @person.books.where(grade: 'professional').page(params[:page]).per(5)
+		@tag_list =Tag.all
 		@creations = @person.creations.page(params[:page]).per(10)
 		@portrait =Portrait.new
 	end

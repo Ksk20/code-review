@@ -13,11 +13,11 @@ Rails.application.routes.draw do
     resources :customers, only:[:edit, :update, :destroy, :show]
     get 'customer/destruction'=> "customers#destruction"
     resources :notifications, only: [:index, :destroy]
-    resources :books, only: [:destroy]
+    resources :books, only: [:index,:destroy]
     resources :people, only:[:index, :create, :show, :edit, :update, :new] do
       resources :portraits, only:[:index, :create, :destroy]
       resources :creations, only:[:new,:index, :create, :edit, :update, :destroy]
-      resources :books, only:[:new, :index, :create, :edit, :update, :destroy] do
+      resources :books, only:[:new,  :create, :edit, :update, :destroy] do
         resources :favorites, only: [:create, :destroy]
       end
     end

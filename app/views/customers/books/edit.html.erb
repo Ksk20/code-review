@@ -43,15 +43,9 @@
          </div>
        </div>
       <h4><mark>史料情報編集</mark></h4>
-      <%= form_with(model: @book , url: person_book_path(@person)) do |f| %>
+      <%= form_with(model: @book , url: person_book_path, local: true) do |f| %>
         <%# エラーメッセージ　%>
-        <% if @book.errors %>
-        <ul>
-          <% @book.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-        <% end %>
+         <%= render 'layouts/error_messages', model: f.object %>
         <%# ここまでエラ-メッセージ　%>
 
         <p class ="form-title">タイトル</p>
@@ -67,6 +61,9 @@
         </div>
         <%# 非表示用サムネイルURL%>
          <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,style: "visibility: hidden", hide_label:"true" %></span><br>
+      　 　<p class ="form-title">スペースを入力することで複数のタグを付けることができます。<br>
+           例：聖徳太子 与謝野晶子 ルター</p>
+        　<%= f.text_field :name %>
 		      <%= f.submit "編集内容を保存する"%>
         </div>
 	    <% end %>

@@ -31,6 +31,8 @@
             <li class='navbox'>
               <%= link_to "偉人一覧", people_path, class:"" %></li>
             <li class='navbox'>
+              <%= link_to "本検索", books_path, class:"" %></li>
+            <li class='navbox'>
               <%= link_to "ログアウト", destroy_customer_session_path, class:"", method: :delete %></li>
         <% elsif  admin_signed_in? %>
             <li class='navbox'>

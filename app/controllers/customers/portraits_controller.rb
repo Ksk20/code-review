@@ -1,5 +1,6 @@
 class Customers::PortraitsController < ApplicationController
 	before_action :authenticate_customer!
+
 	def index
 		@portraits = Portrait.all
 		@person = Person.new

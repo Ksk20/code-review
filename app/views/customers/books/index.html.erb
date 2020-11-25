@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4><mark><strong>タグリスト</strong></mark></h4>
+      <li class="search_friend_by_categorize">
+        <div class="uk-text-secondary uk-text-bold">
+          <ul class="uk-flex uk-flex-wrap">
+            <% @tag_lists.each do |list| %>
+              <li>
+                <%= link_to list.name, books_path(tag_id: list.id), class: 'tag_list' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </li>
+      <h3> 本一覧 </h3>
+      <% @books.each do |book| %>
+        <strong><%= book.title%></strong><br>
+        <%= book.caption %>
+        <p class="tag_list_box">
+          <% book.tags.each do |tag| %>
+            <%=link_to "##{tag.name}", person_path(book.person.id), class: '  smaller tag_list' %>
+          <% end %>
+        </p>
+      <% end %>
+
+
+
+
+    </div>
+  </div>
+</div>

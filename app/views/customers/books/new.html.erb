@@ -88,23 +88,15 @@
     <h4><mark><strong>新規史料登録</strong></mark></h4>
 
     <div class="result-image">
-      <%= form_with(model: @book, id:"form-result", url: person_books_path(@person)) do |f| %>
 
-        <%# エラーメッセージ　%>
-        <% if @book.errors %>
-        <ul>
-          <% @book.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-        <% end %>
-        <%# ここまでエラ-メッセージ　%>
+      <%= form_with(model: @book ,id:"form-result", url: person_books_path, local: true) do |f| %>
 
-        <p class ="form-title">タイトル、著者名、出版社
-        </p>
-        <span class="form-a"><%= f.text_field :title ,id: "book-name" ,size:"100"%>
-        </span>
 
+        <%= render 'layouts/error_messages', model: f.object %>
+
+
+        <p class ="form-title">タイトル、著者名、出版社</p>
+        <span class="form-a"><%= f.text_field :title ,id: "book-name" ,size:"100"%></span>
         <p class ="form-title">感想</p>
         <span class="form-a"><%= f.text_area :caption ,id: "caption" ,size:"100"%>
         </span><br>
@@ -116,7 +108,11 @@
             <%= f.radio_button :grade, 'professional' %> その他（中級者以上向け）</label>
         </div>
         <%# 非表示用サムネイルURL%>
-         <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,style: "visibility: hidden", hide_label:"true" %></span><br>
+        <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,style: "visibility: hidden", hide_label:"true" %>
+        </span><br>
+        <p class ="form-title">スペースを入力することで複数のタグを付けることができます。<br>
+           例：聖徳太子 与謝野晶子 ルター</p>
+        <%= f.text_field :name %>
         <%= f.submit '投稿' %>
       <% end %>
     </div>
