@@ -26,8 +26,8 @@
       <table>
         <tr>
           <td>
-             <p class="top_margin" ><%= @person.name_kana %></p>
-             <h1 style= "margin-top: -10px"><strong><%= @person.name    %></strong></h1>
+            <p class="top_margin" ><%= @person.name_kana %></p>
+            <h1 style= "margin-top: -10px"><strong><%= @person.name    %></strong></h1>
           </td>
           <td style="padding-top: 50px; padding-left: 8px">
             <p>【生没】(<%= @person.birth %>〜<%= @person.death %>)</p>
@@ -42,67 +42,70 @@
 
 <%# ここから史料欄　%>
 
-        <h4 style="padding-top: 20px"><mark>史料情報</mark></h4>
+    <h4 style="padding-top: 20px"><mark>史料情報</mark></h4>
 <%# ここから初心者　%>
-          <p style="font-size: 16px; padding-top: 10px">初心者にオススメ！</p>
-          <div class="book_add_button"  id="fixed" >
-            <%= link_to '史料を登録する', new_person_book_path(@person.id),
+    <p style="font-size: 16px; padding-top: 10px">初心者にオススメ！</p>
+    <div class="book_add_button"  id="fixed" >
+    　<%= link_to '史料を登録する', new_person_book_path(@person.id),
            class: 'btn' %>
-            </div>
-          <table class="table" style="margin-top: -20px">
-            <thead>
-              <tr>
-                <th>タイトル</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <% @beginners.each do |book| %>
-            <tbody>
-            <tr>
-              <td><strong><%= book.title%></strong><br><%= book.caption %></td>
-              <td></td>
-              <td>
+    </div>
+    <table class="table" style="margin-top: -20px">
+      <thead>
+         <tr>
+          <th>タイトル</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      　<% @beginners.each do |book| %>
+      <tbody>
+      <tr>
+        <td><strong><%= book.title%></strong><br><%= book.caption %></td>
+        <td></td>
+        <td>
   <%# ここからいいねボタン%>
-                  <div class="fav" style="width: 100px;">
-                  <% if current_customer != nil %>
-                    <% if book.favorited_by?(current_customer) %>
-　　　　　　　　　　　   <%= link_to person_book_favorite_path(person_id: params[:id], book_id: book), method: :delete do %>
-　　　　　　　　　　　    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-　　　　　　　　　　　    <%= book.favorites.count %> いいね
-　　　　　　　　　　　 <% end %>
-                  <% else %>
-　　　　　　　　　　　 <%= link_to person_book_favorites_path(person_id: params[:id], book_id: book) , method: :post do %>
-　　　　　　　　　　　 <i class="fa fa-heart-o" aria-hidden="true"></i>
-　　　　　　　　　　　 <%= book.favorites.count %> いいね
-                  <% end %>
-　　　　　　　　　 <% end %>
-                  <% end %>
-  <%# ここから史料編集ボタン %>
-                 <% if current_customer != nil && book.customer.id == current_customer.id %>
-                  <span style="width: 10px"><%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book) %></span><% end %>
-                  <% if current_customer != nil && book.customer.id == current_customer.id %>
-                  <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete %><% end %>
-              </td>
-              <td>
-  <%# ここからAPI記述 %>
-              <section class="book-images-frame">
-
-                <% if book.image_url? %>
-                    <%= image_tag book.image_url, class: "book-images-cover", style:"height:200px; width: 150px;" %>
-                  <% else %>
-                    <%= image_tag '/images/no_image.jpg', size: '150x150' %>
-                <% end %>
-
-              </section>
-  <%# ここまでAPI記述 %>
-              </td>
-            </tr>
+          <div class="fav" style="width: 100px;">
+          <% if current_customer != nil %>
+            <% if book.favorited_by?(current_customer) %>
+　　　　　　　　<%= link_to person_book_favorite_path(person_id: params[:id], book_id: book), method: :delete do %>
+　　　　　　　　　<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+　　　　　　　　　　<%= book.favorites.count %> いいね
+　　　　　　　<% end %>
+            <% else %>
+　　　　　　　　<%= link_to person_book_favorites_path(person_id: params[:id], book_id: book) , method: :post do %>
+　　　　　　　　<i class="fa fa-heart-o" aria-hidden="true"></i>
+　　　　　　　　<%= book.favorites.count %> いいね
+            <% end %>
+　　　　　　<% end %>
+     　　<% end %>
+        <p class="tag_list_box">
+          <% book.tags.each do |tag| %>
+            <%=link_to "#{tag.name}", books_path(tag), class: 'smaller tag_list' %>
           <% end %>
-        </table>
-       <%= paginate @beginners %>
+        </p>
+  <%# ここから史料編集ボタン %>
+    　　   <% if current_customer != nil && book.customer.id == current_customer.id %>
+    　　     <span style="width: 10px"><%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book) %></span><% end %>
+    　　   <% if current_customer != nil && book.customer.id == current_customer.id %>
+    　　     <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete %><% end %>
+    　　 </td>
+    　　 <td>
+  <%# ここからAPI記述 %>
+          <section class="book-images-frame">
+            <% if book.image_url? %>
+              <%= image_tag book.image_url, class: "book-images-cover", style:"height:200px; width: 150px;" %>
+            <% else %>
+              <%= image_tag '/images/no_image.jpg', size: '150x150' %>
+            <% end %>
+          </section>
+  <%# ここまでAPI記述 %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+ <%= paginate @beginners %>
 
 
 <%# ここから中級者　%>
@@ -144,7 +147,7 @@
                   <% end %>
                   <p class="tag_list_box">
                     <% book.tags.each do |tag| %>
-                      <%=link_to "##{tag.name}", books_path(tag), class: 'smaller tag_list' %>
+                      <%=link_to "#{tag.name}", books_path(tag), class: 'smaller tag_list' %>
                     <% end %>
                   </p>
   <%# ここから史料編集ボタン %>
@@ -180,8 +183,12 @@
       <table>
         <% @person.creations.each do |creation| %>
         <tr>
-          <td><%= attachment_image_tag creation, :image, :fill, 250, 100 %>
-            <br>投稿者　<%= link_to creation.customer.name, customer_path(creation.customer.id) %>
+          <td>
+             <%= attachment_image_tag creation, :image, :fill, 250, 100 %>
+            <%#=  link_to creation.image.url, 'data-lightbox': creation.image do %>
+              <%#= attachment_image_tag creation, :image, :fill, 250, 100 if creation.image?%>
+            <%# end %>
+          <br>投稿者　<%= link_to creation.customer.name, customer_path(creation.customer.id) %>
 
           </td>
         </tr>

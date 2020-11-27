@@ -1,10 +1,9 @@
 class Person < ApplicationRecord
 	belongs_to :customer, optional: true
 	has_many :books, :dependent => :nullify
-  has_one :tag, :dependent => :nullify
   has_many :portraits
   has_many :creations
-
+  has_one :tag, :dependent => :nullify
   	validates :name, presence:true
   	validates :name_kana,format: {
                    with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,

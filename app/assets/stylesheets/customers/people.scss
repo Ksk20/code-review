@@ -120,3 +120,12 @@ a#people_name{
 .grade_radio_button{
 	margin-bottom: 1.5%;
 }
+
+.modal-middle { //モーダルウィンドウの縦表示位置を調整
+ margin: 5% auto;
+}
+
+.modal-img_footer { //表示予定のテキストとボタンを中央揃え
+ padding: .5em;
+ text-align: center;
+}

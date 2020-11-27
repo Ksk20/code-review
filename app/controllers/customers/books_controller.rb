@@ -43,6 +43,7 @@ class Customers::BooksController < ApplicationController
   def edit
     @book = Book.find(params[:id])
     @person = Person.find(@book.person_id)
+    @tag_list = @book.tags.pluck(:name).join(nil)
   end
 
   def update
@@ -50,7 +51,7 @@ class Customers::BooksController < ApplicationController
     @book[:customer_id] = current_customer.id
     tag_list = params[:book][:name].split(nil)
       if @book.update(book_params)
-　　　　　 @book.save_tag(tag_list)
+       @book.save_tag(tag_list)
          redirect_to person_path(params[:person_id])
       else
            render "edit"

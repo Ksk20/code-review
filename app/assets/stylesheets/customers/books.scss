@@ -1,3 +1,24 @@
 // Place all the styles related to the customers::books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search_friend_by_categorize {
+  list-style: none;
+}
+
+.tag_list{
+	display: inline-block;
+	margin: 0 .1em .6em 0;
+	padding: .6em;
+	line-height: 1;
+	text-decoration: none;
+	color: #078080;
+	background-color: #fff;
+	border: 1px solid #078080;
+	border-left: 5px solid #078080;
+}
+
+.tag_list:before {
+	content: "#";
+
+}
