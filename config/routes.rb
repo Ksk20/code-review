@@ -18,7 +18,6 @@ Rails.application.routes.draw do
       resources :portraits, only:[:index, :create, :destroy]
       resources :creations, only:[:new,:index, :create, :edit, :update, :destroy]
       resources :books, only:[:new,  :create, :edit, :update, :destroy] do
-        resources :tags, only:[:destroy]
         resources :favorites, only: [:create, :destroy]
       end
     end

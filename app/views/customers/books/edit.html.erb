@@ -60,22 +60,14 @@
             <%= f.radio_button :grade, 'professional' %> その他（中級者以上向け）</label>
         </div>
         <%# 非表示用サムネイルURL%>
-         <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,style: "visibility: hidden", hide_label:"true" %></span><br>
-      　 　<p class ="form-title">
-            <div class="book-tags-field">
- 　　　　　　　<%= f.label "カテゴリ" %>
- 　　　　　　　   <ul id="book-tags">
- 　　　　　　　   </ul>
- 　　　　　　　   <%= hidden_field_tag :tag_hidden,@tag_list %>
- 　　　　　　</div>
-        スペースを入力することで複数のタグを付けることができます。<br>
+        <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,style: "visibility: hidden", hide_label:"true" %></span><br>
+      　<p class ="form-title"><strong>カテゴリ</strong>(半角スペースを入力することで複数のタグを付けることができます)<br>
            例：聖徳太子 与謝野晶子 ルター</p>
-          <% @book.tags.each do |tag| %>
-            <%= tag.name %>
-             <%= link_to "消去", person_book_tag_path( @book.person, @book,tag), method: :delete %>
-          <% end %>
-        　<%= f.text_field :name %>
-		      <%= f.submit "編集内容を保存する"%>
+          <div class="book-tags-field">
+        　  <%= f.text_field :name, value: @tag_list %><br>
+          </div>
+		        <%= f.submit "編集内容を保存する"%>
+
         </div>
 	    <% end %>
     </div>

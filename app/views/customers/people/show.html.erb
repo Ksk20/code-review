@@ -184,12 +184,49 @@
         <% @person.creations.each do |creation| %>
         <tr>
           <td>
-             <%= attachment_image_tag creation, :image, :fill, 250, 100 %>
-            <%#=  link_to creation.image.url, 'data-lightbox': creation.image do %>
-              <%#= attachment_image_tag creation, :image, :fill, 250, 100 if creation.image?%>
-            <%# end %>
-          <br>投稿者　<%= link_to creation.customer.name, customer_path(creation.customer.id) %>
+            <%= attachment_image_tag creation, :image, :fill, 250, 100 %>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+              拡大する
+            </button>
+          　<br>投稿者　<%= link_to creation.customer.name, customer_path(creation.customer.id) %>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%= creation.caption %></h4>
+      </div>
+      <div class="modal-body">
+<%#= attachment_image_tag creation, :image, :fill, 250, 100 %>
+<%= attachment_image_tag creation, :image, :fill, 1920, 1440, class: 'img-responsive thumbnail　aligncenter size-full wp-image-425' ,style: "cursor:pointer" %>
+
+<div class="modal fade" id="image_Modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-lg modal-middle"> //モーダルウィンドウの縦表示位置を調整・画像を大きく見せる
+<div class="modal-content">
+ 
+<%#= attachment_image_tag creation, :image, :fill, 250, 100 %>
+<%= attachment_image_tag creation, :image, :fill, 1920, 1440, class: 'aligncenter size-full wp-image-425', style: "cursor:pointer" %>
+
+</div>
+<div class="modal-img_footer">
+<p>モーダル商品</p> //テキスト表示
+<button type="button" class="btn btn-success" data-dismiss="modal">Close</button> //ボタンを取り付け
+</div>
+</div>
+</div>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        　<!-- ここまで　モーダルウィンドウ -->
           </td>
         </tr>
         <tr>

@@ -43,7 +43,7 @@ class Customers::BooksController < ApplicationController
   def edit
     @book = Book.find(params[:id])
     @person = Person.find(@book.person_id)
-    @tag_list = @book.tags.pluck(:name).join(nil)
+    @tag_list = @book.tags.pluck(:name).join(" ")
   end
 
   def update

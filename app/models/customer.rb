@@ -24,5 +24,9 @@ class Customer < ApplicationRecord
   validates :name,
 	presence: true
 
+  after_create :send_welcome_mail
+  def send_welcome_mail
+    CustomerMailer.customer_welcome_mail(self).deliver
+  end
 
 end
