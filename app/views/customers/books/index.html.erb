@@ -1,15 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4><mark><strong>タグリスト</strong></mark></h4>
+      <h4><mark><strong>タグ絞り込み検索</strong></mark></h4>
       <li class="search_friend_by_categorize">
-        <%#<div class="uk-text-secondary uk-text-bold">%>
-
-            <% @tag_lists.each do |list| %>
-                <%= link_to list.name, books_path(tag_id: list.id), class: 'tag_list' %>
-
-            <% end %>
-        <%#</div>%>
+        <% @tag_lists.each do |list| %>
+          <%= link_to list.name, books_path(tag_id: list.id), class: 'tag_list' %>
+        <% end %>
       </li>
       <h3> 本一覧 </h3>
       <% @books.each do |book| %>
@@ -17,16 +13,10 @@
         <%= book.caption %>
         <p class="tag_list_box">
           <% book.tags.each do |tag| %>
-
             <%=link_to "#{tag.name}", person_path(book.person.id), class: '  smaller tag_list' %>
-
           <% end %>
         </p>
       <% end %>
-
-
-
-
     </div>
   </div>
 </div>

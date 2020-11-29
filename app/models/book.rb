@@ -31,6 +31,11 @@ class Book < ApplicationRecord
     end
   end
 
+  #検索メソッド、タイトルと内容をあいまい検索する
+  def self.books_serach(search)
+    Book.where(['title LIKE ? OR content LIKE ?', "%#{search}%", "%#{search}%"])
+  end
+
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
