@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/' => "customers/homes#top", as: 'home'
   get 'homes/about' => "customers/homes#about",as: 'about'
   get 'homes/how_to_use' => "customers/homes#how_to_use",as: 'how_to_use'
+  post '/people/:person_id/books/:book_id/favorites' => "customers/favorites#create", as: "like"
+  delete '/people/:person_id/books/:book_id/favorites' => "customers/favorites#destroy", as: "dislike"
 
   scope module: 'customers' do
     resources :customers, only:[:edit, :update, :destroy, :show]
@@ -17,9 +19,7 @@ Rails.application.routes.draw do
     resources :people, only:[:index, :create, :show, :edit, :update, :new] do
       resources :portraits, only:[:index, :create, :destroy]
       resources :creations, only:[:new,:index, :create, :edit, :update, :destroy]
-      resources :books, only:[:new,  :create, :edit, :update, :destroy] do
-        resources :favorites, only: [:create, :destroy]
-      end
+      resources :books, only:[:new,  :create, :edit, :update, :destroy]
     end
   end
 

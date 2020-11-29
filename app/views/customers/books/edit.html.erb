@@ -45,30 +45,25 @@
       <h4><mark>史料情報編集</mark></h4>
       <%= form_with(model: @book , url: person_book_path, local: true) do |f| %>
         <%# エラーメッセージ　%>
-         <%= render 'layouts/error_messages', model: f.object %>
+        <%= render 'layouts/error_messages', model: f.object %>
         <%# ここまでエラ-メッセージ　%>
-
-        <p class ="form-title">タイトル</p>
-        <span class="form-a"><%= f.text_field :title ,id: "book-name" %></span>
-        <p class ="form-title">説明文</p>
-        <span class="form-a"><%= f.text_area :caption %></span>
+        <p class ="form-title">■タイトル、著者名、出版社</p>
+        　<span class="form-a"><%= f.text_area :title ,id: "book-name" ,size:"100" %></span>
+        <p class ="form-title">■感想</p>
+        　<span class="form-a"><%= f.text_area :caption ,size:"100" %></span>
         <div class="grade_radio_button">
-          <p class ="form-title">本の種類</p>
-          <label>
-            <%= f.radio_button :grade, 'beginner' %> 初心者向け</label>
-          <label>
-            <%= f.radio_button :grade, 'professional' %> その他（中級者以上向け）</label>
+        <p class ="form-title">■本の種類</p>
+          <label><%= f.radio_button :grade, 'beginner' %> 初心者向け</label>
+          <label><%= f.radio_button :grade, 'professional' %> その他（中級者以上向け）</label>
         </div>
+        <p class ="form-title"><strong>■カテゴリ</strong>(半角スペースを入力することで複数のタグを付けることができます)
+        </p>
+          <div class="book-tags-field">
+        　  <%= f.text_field :name, value: @tag_list, size:"100" %>　<span>例：聖徳太子 与謝野晶子 ルター</span><br>
+          </div>
         <%# 非表示用サムネイルURL%>
         <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,style: "visibility: hidden", hide_label:"true" %></span><br>
-      　<p class ="form-title"><strong>カテゴリ</strong>(半角スペースを入力することで複数のタグを付けることができます)<br>
-           例：聖徳太子 与謝野晶子 ルター</p>
-          <div class="book-tags-field">
-        　  <%= f.text_field :name, value: @tag_list %><br>
-          </div>
-		        <%= f.submit "編集内容を保存する"%>
-
-        </div>
+		      <%= f.submit "編集内容を保存する"%>
 	    <% end %>
     </div>
   </div>

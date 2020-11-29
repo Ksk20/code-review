@@ -1,6 +1,6 @@
 class Customers::HomesController < ApplicationController
 	def top
-		@people = Person.all.page(params[:page]).per(6)
+		@people = Person.all.order(created_at: :desc).page(params[:page]).per(6)
 		@portraits = Portrait.all
 		@advertisements = Person.all.select do |person|
 			person.portraits.empty?

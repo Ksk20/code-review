@@ -13,6 +13,7 @@ class Customers::BooksController < ApplicationController
 	end
 
 	def index
+    @book = Book.all
     if params[:search].present?
       books =Book.books_search(params[:search])
     elsif params[:tag_id].present?

@@ -8,11 +8,10 @@
       <!-- 退会、編集、パス変更　-->
       <div class="button3">
         <% if current_customer != nil && @customer.id == current_customer.id %>
-        <div class="col-sm-1" style=""><%= link_to '編集する', edit_customer_path, class: 'btn' %></div>
-        <div class="col-sm-2" style=""><%= link_to 'パスワードを変更する', edit_customer_registration_path, class: 'btn' %></div>
-        <div class="col-sm-1" style=""><%= link_to '退会する', customer_destruction_path(@customer.id), class: 'btn edit_btn' %></div>
+          <div class="col-sm-1" style=""><%= link_to '編集する', edit_customer_path, class: 'btn' %></div>
+          <div class="col-sm-2" style=""><%= link_to 'パスワードを変更する', edit_customer_registration_path, class: 'btn' %></div>
+          <div class="col-sm-1" style=""><%= link_to '退会する', customer_destruction_path(@customer.id), class: 'btn edit_btn' %></div>
         <% end %>
-      
       <div class="col-sm-6" ></div>
       </div>
       <!-- 退会、編集、パス変更終了　-->

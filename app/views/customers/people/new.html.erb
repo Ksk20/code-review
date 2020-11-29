@@ -12,24 +12,23 @@
       <%= render 'layouts/error_messages', model: f.object %>
       <%# ここまでエラーメッセージ %>
 
-        <p class="form-title">※名前</p>
-            <span class="form-a"><%= f.text_field :name %>
-            </span>
-             <p class="form-title">※フリガナ（全角カタカナ）</p>
-            <span class="form-a"><%= f.text_field :name_kana %></span>
-              <p class ="form-title">別名</p>
-            <span class="form-a"><%= f.text_field :alias %></span>
-              <p class="form-title">出身国</p>
-            <span class="form-a"><%= f.text_field :country %></span>
-              <p class="form-title">生まれた年</p>
-            <span class="form-a"><%= f.text_field :birth %>
-              <p class="form-title">亡くなった年</p></span>
-            <span class="form-a"><%= f.text_field :death %></span>
-              <p class="form-title">紹介文</p>
-            <span class="form-a"><%= f.text_area :introduction %></span><br>
-            <%= f.text_field :name %>
-              <span class="form-a"><%= f.submit '保存', class: "btn-z" %></span>
+      <p class="form-title">※名前</p>
+        <span class="form-a"><%= f.text_field :name %>
+        </span>
+      <p class="form-title">※フリガナ（全角カタカナ）</p>
+        <span class="form-a"><%= f.text_field :name_kana %></span>
+      <p class ="form-title">別名</p>
+        <span class="form-a"><%= f.text_field :alias %></span>
+      <p class="form-title">出身国</p>
+        <span class="form-a"><%= f.text_field :country %></span>
+      <p class="form-title">生まれた年</p>
+        <span class="form-a"><%= f.text_field :birth %>
+      <p class="form-title">亡くなった年</p></span>
+        <span class="form-a"><%= f.text_field :death %></span>
+      <p class="form-title">紹介文</p>
+        <span class="form-a"><%= f.text_area :introduction %></span><br>
+          <span class="form-a"><%= f.submit '保存', class: "btn-z" %></span>
 	　  <% end %>
-</div>
-</div>
+    </div>
+  </div>
 </div>

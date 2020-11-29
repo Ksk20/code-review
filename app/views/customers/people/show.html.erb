@@ -5,7 +5,11 @@
         <tr>
           <td class="top_margin" >
             <% @person.portraits.each do |portrait| %>
-              <%= attachment_image_tag portrait, :image, :fill, 120, 120 %>
+              <% if @person.portraits[0] == portrait %>
+                <%= attachment_image_tag portrait, :image, :fill, 130, 130 %>
+              <% else %>
+                <%= attachment_image_tag portrait, :image, :fill, 100, 100 %>
+              <% end %>
             <% end %>
           </td>
           <td class="top_margin">
@@ -38,6 +42,10 @@
       <p>【人物説明】<br><span class="introduction"><%= @person.introduction %></span><br>
          <%= link_to "偉人情報を編集する", edit_person_path(@person.id),class: "btn peoplee_edit_btn"%>
       </p>
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @person.name %>のページを更新しました" data-via="<%= current_customer.name %>" data-show-count="false"></a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a href="https://note.com/intent/social_button" class="note-social-button" data-url="https://www.pieceofcake.co.jp/"></a>
+      <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
     </div>
 
 <%# ここから史料欄　%>
@@ -52,9 +60,7 @@
     <table class="table" style="margin-top: -20px">
       <thead>
          <tr>
-          <th>タイトル</th>
-          <th></th>
-          <th></th>
+          <th>タイトル/レビュー</th>
           <th></th>
           <th></th>
         </tr>
@@ -62,37 +68,37 @@
       　<% @beginners.each do |book| %>
       <tbody>
       <tr>
-        <td><strong><%= book.title%></strong><br><%= book.caption %></td>
-        <td></td>
+        <td><strong><%= book.title%></strong><br><%= book.caption %><br><strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %></strong>
+        </td>
         <td>
-  <%# ここからいいねボタン%>
-          <div class="fav" style="width: 100px;">
+<%# ここからいいねボタン%>
+          <div class="fav" style="width: 120px;">
           <% if current_customer != nil %>
             <% if book.favorited_by?(current_customer) %>
-　　　　　　　　<%= link_to person_book_favorite_path(person_id: params[:id], book_id: book), method: :delete do %>
-　　　　　　　　　<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-　　　　　　　　　　<%= book.favorites.count %> いいね
-　　　　　　　<% end %>
+              <%= link_to dislike_path(person_id: params[:id], book_id: book), method: :delete do %>
+                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                <p class="count_favorites"><%= book.favorites.count %> いいね</p>
+              <% end %>
             <% else %>
-　　　　　　　　<%= link_to person_book_favorites_path(person_id: params[:id], book_id: book) , method: :post do %>
-　　　　　　　　<i class="fa fa-heart-o" aria-hidden="true"></i>
-　　　　　　　　<%= book.favorites.count %> いいね
+              <%= link_to like_path(person_id: params[:id], book_id: book) , method: :post do %>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <%= book.favorites.count %> いいね
+              <% end %>
             <% end %>
-　　　　　　<% end %>
-     　　<% end %>
-        <p class="tag_list_box">
-          <% book.tags.each do |tag| %>
-            <%=link_to "#{tag.name}", books_path(tag), class: 'smaller tag_list' %>
           <% end %>
-        </p>
-  <%# ここから史料編集ボタン %>
-    　　   <% if current_customer != nil && book.customer.id == current_customer.id %>
-    　　     <span style="width: 10px"><%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book) %></span><% end %>
-    　　   <% if current_customer != nil && book.customer.id == current_customer.id %>
-    　　     <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete %><% end %>
-    　　 </td>
-    　　 <td>
-  <%# ここからAPI記述 %>
+          <p>
+          <% book.tags.each do |tag| %>
+            <%=link_to "#{tag.name}", books_path(tag_id: tag.id), class: 'smaller tag_list' %>
+          <% end %>
+          </p>
+<%# ここから史料編集ボタン %>
+          <% if current_customer != nil && book.customer.id == current_customer.id %>
+            <span style="width: 10px"><%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book) ,class: 'small_edit_btn' %></span><% end %>
+          <% if current_customer != nil && book.customer.id == current_customer.id %>
+          <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete ,class: 'small_delete_btn' %><% end %>
+        </td>
+        <td>
+<%# ここからAPI記述 %>
           <section class="book-images-frame">
             <% if book.image_url? %>
               <%= image_tag book.image_url, class: "book-images-cover", style:"height:200px; width: 150px;" %>
@@ -100,79 +106,78 @@
               <%= image_tag '/images/no_image.jpg', size: '150x150' %>
             <% end %>
           </section>
-  <%# ここまでAPI記述 %>
+<%# ここまでAPI記述 %>
         </td>
       </tr>
     <% end %>
-  </table>
- <%= paginate @beginners %>
+  　</table>
+  　<%= paginate @beginners %>
 
 
 <%# ここから中級者　%>
-          <p style="font-size: 16px; padding-top: 10px">その他オススメ！</p>
-          <div class="book_add_button" id="fixed" >
-            <%= link_to '史料を登録する', new_person_book_path(@person.id),
-           class: 'btn' %>
-            </div>
-          <table class="table" style="margin-top: -20px">
-            <thead>
-              <tr>
-                <th>タイトル</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <% @professionals.each do |book| %>
-            <tbody>
-            <tr>
-              <td><strong><%= book.title%></strong><br><%= book.caption %></td>
-              <td></td>
-              <td>
-  <%# ここからいいねボタン%>
-                  <div class="fav" style="width: 100px;">
-                  <% if current_customer != nil %>
-                  <% if book.favorited_by?(current_customer) %>
-　　　　　　　　　　　  <%= link_to person_book_favorite_path(person_id: params[:id], book_id: book), method: :delete do %>
-　　　　　　　　　　　    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-　　　　　　　　　　　    <%= book.favorites.count %> いいね
-　　　　　　　　　　　  <% end %>
-　　　　　　　　　　　　<% else %>
-　　　　　　　　　　　  <%= link_to person_book_favorites_path(person_id: params[:id], book_id: book) , method: :post do %>
-　　　　　　　　　　　    <i class="fa fa-heart-o" aria-hidden="true"></i>
-　　　　　　　　　　　    <%= book.favorites.count %> いいね
-　　　　　　　　　　　  <% end %>
-　　　　　　　　　　　<% end %>
-                  <% end %>
-                  <p class="tag_list_box">
-                    <% book.tags.each do |tag| %>
-                      <%=link_to "#{tag.name}", books_path(tag), class: 'smaller tag_list' %>
-                    <% end %>
-                  </p>
-  <%# ここから史料編集ボタン %>
-                 <% if current_customer != nil && book.customer.id == current_customer.id %>
-                  <span style="width: 10px"><%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book) %></span><% end %>
-                  <% if current_customer != nil && book.customer.id == current_customer.id %>
-                  <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete %><% end %>
-              </td>
-              <td>
-  <%# ここからAPI記述 %>
-              <section class="book-images-frame">
+    <p style="font-size: 16px; padding-top: 10px">その他オススメ！</p>
+    <div class="book_add_button" id="fixed" >
+      <%= link_to '史料を登録する', new_person_book_path(@person.id),
+     class: 'btn' %>
+      </div>
+    <table class="table" style="margin-top: -20px">
+      <thead>
+        <tr>
+          <th>タイトル/レビュー</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @professionals.each do |book| %>
+      <tbody>
+      <tr>
+        <td><strong><%= book.title%></strong><br><%= book.caption %><br><strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %></strong>
 
-                <% if book.image_url? %>
-                    <%= image_tag book.image_url, class: "book-images-cover", style:"height:200px; width: 150px;" %>
-                  <% else %>
-                    <%= image_tag '/images/no_image.jpg', size: '150x150' %>
-                <% end %>
-
-              </section>
-  <%# ここまでAPI記述 %>
-              </td>
-            </tr>
+        </td>
+        <td>
+<%# ここからいいねボタン%>
+          <div class="fav" style="width: 120px;">
+          <% if current_customer != nil && book.person_id != nil%>
+            <% if book.favorited_by?(current_customer) %>
+              <%= link_to dislike_path(person_id: params[:id], book_id: book), method: :delete do %>
+                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= book.favorites.count %> いいね
+            <% end %>
+            <% else %>
+              <%= link_to like_path(person_id: params[:id], book_id: book) , method: :post do %>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <%= book.favorites.count %> いいね
+              <% end %>
+            <% end %>
           <% end %>
-        </table>
-      <%= paginate @professionals %>
+          </div>
+            <p class="tag_list_box">
+              <% book.tags.each do |tag| %>
+                <%=link_to "#{tag.name}", books_path(tag_id: tag.id), class: 'smaller tag_list' %>
+              <% end %>
+            </p>
+<%# ここから編集ボタン %>
+          <% if current_customer != nil && book.customer.id == current_customer.id %>
+            <span style="width: 10px"><%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book), class: "small_edit_btn" %></span><% end %>
+          <% if current_customer != nil && book.customer.id == current_customer.id %>
+            <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete , class: 'small_delete_btn' %>
+          <% end %>
+        </td>
+        <td>
+<%# ここからAPI記述 %>
+          <section class="book-images-frame">
+            <% if book.image_url? %>
+              <%= image_tag book.image_url, class: "book-images-cover", style:"height:200px; width: 150px;" %>
+            <% else %>
+              <%= image_tag '/images/no_image.jpg', size: '150x150' %>
+            <% end %>
+          </section>
+<%# ここまでAPI記述 %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <%= paginate @professionals %>
     </div>
 <%# ここまで史料欄　%>
 
@@ -201,13 +206,13 @@
                   <div class="modal-body">
                     <%= attachment_image_tag creation, :image, :fill, 1920, 1440, class: 'img-responsive thumbnail　aligncenter size-full wp-image-425' ,style: "cursor:pointer" %>
                     <div class="modal fade" id="image_Modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                      <div class="modal-dialog modal-lg modal-middle"> //モーダルウィンドウの縦表示位置を調整・画像を大きく見せる
+                      <div class="modal-dialog modal-lg modal-middle">
                         <div class="modal-content">
                           <%= attachment_image_tag creation, :image, :fill, 1920, 1440, class: 'aligncenter size-full wp-image-425', style: "cursor:pointer" %>
                         </div>
                         <div class="modal-img_footer">
-                          <p>モーダル商品</p> //テキスト表示
-                          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button> //ボタンを取り付け
+                          <p></p>
+                          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
                         </div>
                       </div>
                     </div>
@@ -227,23 +232,20 @@
           </td>
         </tr>
         <tr>
-          <td><% if current_customer != nil && creation.customer.id == current_customer.id %>
-              <%= link_to "編集する", edit_person_creation_path(@person, creation ), class: "" %>
+          <td class="btn_top" style="padding-top: 10px; padding-bottom: 20px"><% if current_customer != nil && creation.customer.id == current_customer.id %>
+              <%= link_to "編集する", edit_person_creation_path(@person, creation ), class: "creation_small_edit_btn" %>
               <% end %>
               <% if current_customer != nil && creation.customer.id == current_customer.id %>
-              <%= link_to "消去", person_creation_path(@person, creation), method: :delete, class: "" %>
+              <%= link_to "消去", person_creation_path(@person, creation), method: :delete, class: "creation_small_delete_btn" %>
               <% end %>
           </td>
         </tr>
         <% end %>
-
       </table>
       <%= paginate @creations %>
       <div class="add button">
-          <%= link_to '作品を登録する', new_person_creation_path(@person.id), class: 'btn' %>
+        <%= link_to '作品を登録する', new_person_creation_path(@person.id), class: 'btn' %>
       </div>
-
     </div>
-
   </div>
 </div>
