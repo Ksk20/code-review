@@ -1,9 +1,8 @@
 <div class="container">
-
-	<h1>偉人一覧</h1>
-	<% @people.each do |person| %>
-	<p>人物名</p>
+  <h1>偉人一覧</h1>
+  <% @people.each do |person| %>
+    <p>人物名</p>
 	<span><%= link_to person.name, person_path(person.id) %></span>
 	<%= link_to "削除", admins_person_path(person.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-	<% end %>
+  <% end %>
 </div>

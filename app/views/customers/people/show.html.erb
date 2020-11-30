@@ -17,7 +17,7 @@
               <%= render 'layouts/error_messages', model: f.object %>
               <%= f.attachment_field :image %>
               <p class="portrait_add_btn">
-            <%= f.submit '肖像画を追加する', class: "btn" %></p><%= flash[:notice] %>
+              <%= f.submit '肖像画を追加する', class: "btn" %></p><%= flash[:notice] %>
             <% end %>
           </td>
         </tr>
@@ -232,12 +232,13 @@
           </td>
         </tr>
         <tr>
-          <td class="btn_top" style="padding-top: 10px; padding-bottom: 20px"><% if current_customer != nil && creation.customer.id == current_customer.id %>
+          <td class="btn_top" style="padding-top: 10px; padding-bottom: 20px">
+            <% if current_customer != nil && creation.customer.id == current_customer.id %>
               <%= link_to "編集する", edit_person_creation_path(@person, creation ), class: "creation_small_edit_btn" %>
-              <% end %>
-              <% if current_customer != nil && creation.customer.id == current_customer.id %>
+            <% end %>
+            <% if current_customer != nil && creation.customer.id == current_customer.id %>
               <%= link_to "消去", person_creation_path(@person, creation), method: :delete, class: "creation_small_delete_btn" %>
-              <% end %>
+            <% end %>
           </td>
         </tr>
         <% end %>

@@ -10,30 +10,29 @@
           <%= f.label :is_effective, "有効", {value: true} %>
           <%= f.radio_button :is_effective, :false %>
           <%= f.label :is_effective, "無効", {value: false} %>
-
           <%= f.submit "追加", class: "btn btn-primary" %>
-      </div>
+        </div>
       <% end %>
 
-        <table class="table" style="border: 1px solid #696969; width: 400px">
-          <thead>
-            <tr class="active">
-              <th>タグ名</th>
-              <th>状態</th>
-              <th></th>
-            </tr>
-          </thead>
+      <table class="table" style="border: 1px solid #696969; width: 400px">
+        <thead>
+          <tr class="active">
+            <th>タグ名</th>
+            <th>状態</th>
+            <th></th>
+          </tr>
+        </thead>
 
-          <tbody>
-            <% @tags.each do |tag| %>
-              <tr>
-                <td><%= tag.name %></td>
-                <td><%= tag.is_effective ? '有効　　' : '無効　　' %></td>
-                <td><%= link_to "編集する", edit_admins_tag_path(tag.id), class: "btn btn-primary" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-	</div>
+        <tbody>
+          <% @tags.each do |tag| %>
+            <tr>
+              <td><%= tag.name %></td>
+              <td><%= tag.is_effective ? '有効　　' : '無効　　' %></td>
+              <td><%= link_to "編集する", edit_admins_tag_path(tag.id), class: "btn btn-primary" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+	  </div>
   </div>
 </div>

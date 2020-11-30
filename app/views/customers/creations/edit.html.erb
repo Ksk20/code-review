@@ -9,9 +9,8 @@
           <tbody>
             <tr>
               <td>絵</td>
-              <td><div class="field">
-                   <%= f.attachment_field :image %>
-                  </div>
+              <td>
+                <div class="field"><%= f.attachment_field :image %></div>
               </td>
               <td>
               </td>
@@ -19,17 +18,14 @@
             <tr>
               <td>説明文</td>
               <td><%= f.text_area :caption %></td>
-              <td>
-              </td>
+              <td></td>
             </tr>
-
           </tbody>
         </table>
-
         <div style="text-align: center;">
 		      <%= f.submit "編集内容を保存する", class: 'btn' %>
-          <% end %>
         </div>
+      <% end %>
     </div>
   </div>
 </div>

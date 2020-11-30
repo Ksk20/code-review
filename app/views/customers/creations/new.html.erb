@@ -5,17 +5,15 @@
       <%= form_with(model: @creation, url: person_creations_path(@person)) do |f| %>
         <%# エラーメッセージ　%>
         <%= render 'layouts/error_messages', model: f.object %>
-
         <%# ここまでエラ-メッセージ　%>
-			<p class="form-title"><strong>絵</strong></p>
-  			 <%= f.attachment_field :image %>
-      <p class="form-title"><strong>その他</strong></p>
-         <%= f.attachment_field :cartoon %>
-  		<p class="form-title"><strong>説明文</strong></p>
-  			<%= f.text_area :caption %>
-  			<%= f.submit '投稿' %>
-		<% end %>
-
-	</div>
+			  <p class="form-title"><strong>絵</strong></p>
+  			  <%= f.attachment_field :image %>
+        <p class="form-title"><strong>その他</strong></p>
+          <%= f.attachment_field :cartoon %>
+  		  <p class="form-title"><strong>説明文</strong></p>
+  			  <%= f.text_area :caption %>
+  			  <%= f.submit '投稿' %>
+		  <% end %>
+	  </div>
   </div>
  </div>
