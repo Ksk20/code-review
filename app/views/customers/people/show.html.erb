@@ -69,6 +69,10 @@
       <tbody>
       <tr>
         <td><strong><%= book.title%></strong><br><%= book.caption %><br><strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %></strong>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @person.name %>に感想(<%= book.title%>)を登録しました" data-via="<%= current_customer.name %>" data-show-count="false"></a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a href="https://note.com/intent/social_button" class="note-social-button" data-url="https://www.pieceofcake.co.jp/"></a>
+            <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
         </td>
         <td>
 <%# ここからいいねボタン%>
@@ -131,8 +135,12 @@
       <% @professionals.each do |book| %>
       <tbody>
       <tr>
-        <td><strong><%= book.title%></strong><br><%= book.caption %><br><strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %></strong>
-
+        <td>
+          <strong><%= book.title%></strong><br><%= book.caption %><br><strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %></strong>
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @person.name %>に感想(<%= book.title%>)を登録しました" data-via="<%= current_customer.name %>" data-show-count="false"></a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a href="https://note.com/intent/social_button" class="note-social-button" data-url="https://www.pieceofcake.co.jp/"></a>
+          <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
         </td>
         <td>
 <%# ここからいいねボタン%>
