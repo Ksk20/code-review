@@ -5,7 +5,13 @@ class Customers::PeopleController < ApplicationController
 	end
 
 	def index
-	  @people = Person.order(:name_kana)
+		@people = Person.order(:name_kana)
+	end
+
+	def search
+		@people = Person.search(params[:keyword]).order(:name_kana)
+		@keyword = params[:keyword]
+		render "index"
 	end
 
 	def show

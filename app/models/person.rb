@@ -11,4 +11,7 @@ class Person < ApplicationRecord
                  }
     validates :birth, numericality: { only_integer: true }, allow_blank: true
     validates :death, numericality: { only_integer: true }, allow_blank: true
+  def self.search(keyword)
+      where(["name like? OR alias like? OR name_kana like?","%#{keyword}%","%#{keyword}%","%#{keyword}%"])
+  end
 end

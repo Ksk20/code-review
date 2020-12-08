@@ -69,25 +69,16 @@ p.form-title{
 	color: f45d48;
 	border-radius: 10px;
 }
-.column{
-   column-count: 4;
-}
-
-ul {
-  list-style: none;
-}
-
-.people-list{
-	margin-top: 0;
-	padding: 1.5%;
-
+.people_name_search{
+  margin-top: 20px;
+  font-size: 17px;
 }
 
 .color_box{
 	background: #f8f5f2;
-	border-radius: 5px;
-	padding: 1.5%;
-
+	border-radius: 10px;
+  padding: 1px;
+  border: solid 4px #ffffff;
 }
 
 a#people_name{
