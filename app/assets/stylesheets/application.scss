@@ -17,37 +17,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-header{
-	height: 117px;
-}
 
-.logo{
-	margin-top: -25px;
-}
-.navbox{
-	padding-top: 60px;
-}
-
-header.navbar.navbar-fixed-top{
-  background: #f8f5f2;
-}
-
-i.fa.fa-circle::before{
-  color: gold;
-  margin-top: -250px;
-}
-
-.nav-tabs .nav-link.active {
-	color: #495057;
-  background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
-}
-
-li.navbox.test-user{
-  margin-left: 30px;
-  /* text-align: center; */
-  color: #078080;
-}
 
 .btn-circle-border-double {
   margin-top: 15px;
@@ -69,8 +39,12 @@ li.navbox.test-user{
   transform: rotateY(360deg);
 }
 
-.navbar-nav > li > a{
-  color: #232323;
+
+header.navbar.navbar-fixed-top{
+  background: #f8f5f2;
+}
+.navbox{
+  padding-top: 60px;
 }
 
 .new_button{
@@ -81,6 +55,27 @@ li.navbox.test-user{
   color: #fffffe;
   margin-top: 12px;
   margin-left: 10px;
+}
+
+i.fa.fa-circle::before{
+  color: gold;
+  margin-top: -250px;
+}
+
+.nav-tabs .nav-link.active {
+  color: #495057;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+li.navbox.test-user{
+  margin-left: 30px;
+  /* text-align: center; */
+  color: #078080;
+}
+
+.navbar-nav > li > a{
+  color: #232323;
 }
 
 .s-button {

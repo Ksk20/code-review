@@ -42,10 +42,10 @@
       <p>【人物説明】<br><span class="introduction"><%= @person.introduction %></span><br>
          <%= link_to "偉人情報を編集する", edit_person_path(@person.id),class: "btn peoplee_edit_btn"%>
       </p>
-      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @person.name %>のページを更新しました" data-via="<%= current_customer.name %>" data-show-count="false"></a>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      <a href="https://note.com/intent/social_button" class="note-social-button" data-url="https://www.pieceofcake.co.jp/"></a>
-      <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @person.name %>のページを更新しました" data-show-count="false"></a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a href="https://note.com/intent/social_button" class="note-social-button" data-url="https://www.pieceofcake.co.jp/"></a>
+        <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
     </div>
 
 <%# ここから史料欄　%>
@@ -68,11 +68,15 @@
       　<% @beginners.each do |book| %>
       <tbody>
       <tr>
-        <td><strong><%= book.title%></strong><br><%= book.caption %><br><strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %></strong>
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @person.name %>に感想(<%= book.title%>)を登録しました" data-via="<%= current_customer.name %>" data-show-count="false"></a>
+        <td>
+          <strong><%= book.title%></strong><br><%= book.caption %><br><strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %>
+          </strong>
+        　<% if current_customer != nil %>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @person.name %>に「<%= book.title%>)」の感想を登録しました"  data-show-count="false" data-hashtags="Numare"></a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <a href="https://note.com/intent/social_button" class="note-social-button" data-url="https://www.pieceofcake.co.jp/"></a>
             <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
+          <% end %>
         </td>
         <td>
 <%# ここからいいねボタン%>
@@ -136,11 +140,14 @@
       <tbody>
       <tr>
         <td>
-          <strong><%= book.title%></strong><br><%= book.caption %><br><strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %></strong>
-          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @person.name %>に感想(<%= book.title%>)を登録しました" data-via="<%= current_customer.name %>" data-show-count="false"></a>
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          <a href="https://note.com/intent/social_button" class="note-social-button" data-url="https://www.pieceofcake.co.jp/"></a>
-          <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
+          <strong><%= book.title%></strong><br><%= book.caption %><br><strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %>
+          </strong>
+          <% if current_customer != nil %>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @person.name %>に「<%= book.title%>)」の感想を登録しました"  data-show-count="false" data-hashtags="Numare"></a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a href="https://note.com/intent/social_button" class="note-social-button" data-url="https://www.pieceofcake.co.jp/"></a>
+            <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
+          <% end %>
         </td>
         <td>
 <%# ここからいいねボタン%>

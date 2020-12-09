@@ -8,67 +8,96 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-  <header class="navbar navbar-fixed-top" >
+  <header class="navbar navbar-fixed-top navbar-default">
   <div class="container">
-
-      <nav class="nav navbar-nav navbar-left ">
-        <h3 class="navbar-brand" >
-          <%= link_to image_tag("/images/logo.png", class: "logo" ,size: '95x95'), home_path %>
-        </h3>
-        <% if customer_signed_in? %>
-            <li class='navbox'>
-             <%= link_to 'マイページ', customer_path(current_customer.id), class:"" %></li>
-            <li class='navbox'>
-              <% if unchecked_notifications.any? %>
-                <i class="fa fa-circle"></i>
-              <% end %>
-              <%= link_to "通知", notifications_path , class:"for_up" %>
-            </li>
-             <li class='navbox'>
-              <%= link_to "使い方", how_to_use_path, class:"" %></li>
-            <li class='navbox'>
-              <%= link_to "偉人一覧", people_path, class:"" %></li>
-            <li class='navbox'>
-              <%= link_to "本検索", books_path, class:"" %></li>
-            <li class='navbox'>
-              <%= link_to "ログアウト", destroy_customer_session_path, class:"", method: :delete %></li>
-        <% elsif  admin_signed_in? %>
-            <li class='navbox'>
-              <%= link_to '登録者一覧', admins_customers_path, class:"" %></span></li>
-            <li class='navbox'>
-              <%= link_to '偉人一覧', admins_people_path, class:"" %></span></li>
-            <li class='navbox'>
-              <%= link_to 'タグ一覧', admins_tags_path, class:"" %></span></li>
-            <li class='navbox'>
-              <%= link_to "ログアウト", destroy_admin_session_path, class:"", method: :delete %></li>
-        <% else %>
-            <li class='navbox'>
-              <%= link_to "使い方", how_to_use_path, class:"" %></li>
-            <li class='navbox'>
-              <%= link_to '人物一覧', people_path , class:"" %></li>
-            <li class='navbox new_button' >
-              <span><%= link_to "新規登録", new_customer_registration_path, class:"s-button" %>
-              </span>
-            </li>
-            <li class='navbox login_button' >
-              <span><%= link_to "ログイン", new_customer_session_path, class:"l-button"%>
-              </span>
-            </li>
-            <li class='navbox test-user'>
-              <strong>テスト会員ログイン情報</strong><br>
-              Email: test@test.com   |   パスワード: 111111
-            </li>
-        <% end %>
-      </nav>
-      <nav>
-        <ul class="nav navbar-nav navbar-right">
-          <strong><%= link_to "偉人登録", new_person_path, class:"btn-circle-border-double" %></strong></li>
-        </ul>
-      </nav>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <% if customer_signed_in? %>
+        <span class="マイページ"></span>
+        <span class="通知"></span>
+        <span class="使い方"></span>
+        <span class="偉人一覧"></span>
+        <span class="本検索"></span>
+        <span class="ログアウト"></span>
+        <span class="偉人登録"></span>
+      <% elsif  admin_signed_in? %>
+        <span class="登録者一覧"></span>
+        <span class="偉人一覧"></span>
+        <span class="タグ一覧"></span>
+        <span class="ログアウト"></span>
+      <% else %>
+        <span class="使い方"></span>
+        <span class="人物一覧"></span>
+        <span class="本一覧"></span>
+        <span class="新規登録"></span>
+        <span class="ログイン"></span>
+        <span class="テスト会員ログイン情報"></span>
+        <span class="偉人登録"></span>
+      <% end %>
+      </button>
+      <%= link_to image_tag("/images/logo.png", class: "logo" ,size: '95x95'), home_path %>
     </div>
-
+    <nav>
+      <ul id="navbar" class="nav navbar-nav navbar-left navbar-collapse collapse">
+        <% if customer_signed_in? %>
+          <li class='navbox'>
+           <%= link_to 'マイページ', customer_path(current_customer.id), class:"" %></li>
+          <li class='navbox'>
+            <% if unchecked_notifications.any? %>
+              <i class="fa fa-circle"></i>
+            <% end %>
+            <%= link_to "通知", notifications_path , class:"for_up" %>
+          </li>
+           <li class='navbox'>
+            <%= link_to "使い方", how_to_use_path, class:"" %></li>
+          <li class='navbox'>
+            <%= link_to "偉人一覧", people_path, class:"" %></li>
+          <li class='navbox'>
+            <%= link_to "本検索", books_path, class:"" %></li>
+          <li class='navbox'>
+            <%= link_to "ログアウト", destroy_customer_session_path, class:"", method: :delete %></li>
+          <li class='navbox_people'>
+            <strong><%= link_to "偉人登録", new_person_path, class:"btn-circle-border-double" %>
+            </strong>
+          </li>
+        <% elsif  admin_signed_in? %>
+          <li class='navbox'>
+            <%= link_to '登録者一覧', admins_customers_path, class:"" %></span></li>
+          <li class='navbox'>
+            <%= link_to '偉人一覧', admins_people_path, class:"" %></span></li>
+          <li class='navbox'>
+            <%= link_to 'タグ一覧', admins_tags_path, class:"" %></span></li>
+          <li class='navbox'>
+            <%= link_to "ログアウト", destroy_admin_session_path, class:"", method: :delete %></li>
+        <% else %>
+          <li class='navbox'>
+            <%= link_to "使い方", how_to_use_path, class:"" %></li>
+          <li class='navbox'>
+            <%= link_to '人物一覧', people_path , class:"" %></li>
+          <li class='navbox'>
+            <%= link_to "本一覧", books_path, class:"" %></li>
+          <li class='navbox new_button' >
+            <span><%= link_to "新規登録", new_customer_registration_path, class:"s-button" %>
+            </span>
+          </li>
+          <li class='navbox login_button' >
+            <span><%= link_to "ログイン", new_customer_session_path, class:"l-button"%>
+            </span>
+          </li>
+          <li class='navbox test-user'>
+            <strong>テスト会員ログイン情報</strong><br>
+            Email: test@test.com   |   パスワード: 111111
+          </li>
+          <li class='navbox_people'>
+            <strong><%= link_to "偉人登録", new_person_path, class:"btn-circle-border-double" %>
+            </strong>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
   </header>
   <div class="wrapper">
     <%= yield %>
