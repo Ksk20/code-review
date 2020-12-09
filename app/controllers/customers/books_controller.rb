@@ -13,10 +13,7 @@ class Customers::BooksController < ApplicationController
 	end
 
 	def index
-    @book = Book.all
-    if params[:search].present?
-      books =Book.books_search(params[:search])
-    elsif params[:tag_id].present?
+    if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       books = @tag.books.order(created_at: :desc)
     else
@@ -25,6 +22,13 @@ class Customers::BooksController < ApplicationController
     @tag_lists = Tag.all
     @books = Kaminari.paginate_array(books).page(params[:page]).per(10)
 	end
+
+  def search
+    @tag_lists = Tag.all
+    @books = Book.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
 
 	def create
 		person = Person.find(params[:person_id])

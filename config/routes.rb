@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'homes/about' => "customers/homes#about",as: 'about'
   get 'homes/how_to_use' => "customers/homes#how_to_use",as: 'how_to_use'
   get '/people/search' => 'customers/people#search'
+  get '/books/search' => 'customers/books#search'
   post '/people/:person_id/books/:book_id/favorites' => "customers/favorites#create", as: "like"
   delete '/people/:person_id/books/:book_id/favorites' => "customers/favorites#destroy", as: "dislike"
 

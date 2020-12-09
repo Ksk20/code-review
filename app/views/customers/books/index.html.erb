@@ -1,13 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4><mark><strong>タグ絞り込み検索</strong></mark></h4>
+      <h4><mark>タグ絞り込み検索</strong></mark>
+       <%= link_to "リセット", books_path,class: "btn btn-sm "%>
+      </h4>
       <li class="search_friend_by_categorize">
         <% @tag_lists.each do |list| %>
           <%= link_to list.name, books_path(tag_id: list.id), class: 'tag_list' %>
         <% end %>
       </li>
-      <h3> 本一覧 </h3>
+      <P class="book_name_search"><strong>ワード検索</strong><span class="attention">（本のタイトル、感想文からヒットするものを検索します)</span></p>
+      <%= form_with url: books_search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, value: @keyword %>
+        <%= f.submit "ワード検索" %>
+      <% end %>
+      <h4><mark> 本一覧 </mark></h4>
       <% @books.each do |book| %>
         <div>
           <strong><%= book.title%></strong><br>
@@ -35,6 +42,7 @@
         <% end %>
         </p>
       <% end %>
+      <%= paginate @books %>
     </div>
   </div>
 </div>
