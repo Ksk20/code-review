@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4><mark>タグ絞り込み検索</strong></mark>
+      <h4 style="padding-top: 20px;"><mark>タグ絞り込み検索</strong></mark>
        <%= link_to "リセット", books_path,class: "btn btn-sm "%>
       </h4>
       <li class="search_friend_by_categorize">
@@ -42,7 +42,6 @@
         <% end %>
         </p>
       <% end %>
-      <%= paginate @books %>
     </div>
   </div>
 </div>

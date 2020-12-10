@@ -6,6 +6,7 @@
         <%= f.text_field :keyword, value: @keyword %>
         <%= f.submit "人物名検索" %>
  	  <% end %>
+    <%= link_to "リセット", people_path,class: "btn btn-xs "%>
       <h4><mark>偉人一覧</mark>
 	    <span class="attention">(アイウエオ順)</span>
 	  </h4>
