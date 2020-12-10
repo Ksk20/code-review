@@ -40,12 +40,14 @@
       </table>
       <p>【別名】<%= @person.alias %>【国】<%= @person.country %></p>
       <p>【人物説明】<br><span class="introduction"><%= @person.introduction %></span><br>
-         <%= link_to "偉人情報を編集する", edit_person_path(@person.id),class: "btn peoplee_edit_btn"%>
+        <%= link_to "偉人情報を編集する", edit_person_path(@person.id),class: "btn peoplee_edit_btn"%>
       </p>
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @person.name %>のページを更新しました" data-show-count="false"></a>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        <a href="https://note.com/intent/social_button" class="note-social-button" data-url="https://www.pieceofcake.co.jp/"></a>
-        <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
+        <% if current_customer != nil %>
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @person.name %>のページを更新しました" data-show-count="false"></a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a href="https://note.com/intent/social_button" class="note-social-button" data-url="https://www.pieceofcake.co.jp/"></a>
+          <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
+        <% end %>
     </div>
 
 <%# ここから史料欄　%>
