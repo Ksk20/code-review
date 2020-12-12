@@ -5,7 +5,7 @@ class Book < ApplicationRecord
 	has_many :notifications, dependent: :destroy
   has_many :book_tags, dependent: :destroy, foreign_key: 'book_id'
   has_many :tags, through: :book_tags
-
+  attachment :scribble
 	validates :title, presence:true
 	validates :caption, presence:true
   validates :grade, presence:true

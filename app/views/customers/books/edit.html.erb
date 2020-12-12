@@ -1,65 +1,72 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg">
-
-
- 　　  <div class="result">
-        <strong class="ISBN_search" id="title-search">資料情報検索</strong>
- 　　    <div class = "panel-title">
-
- 　　      <div class="ISBN_input">ISBN13：<input id="isbn" type="text" name="isbn" value="" autofocus>
-            <button id="getBookInfo" class="btn btn-default">書籍情報取得
-            </button>
+    <div class="col-lg-12">
+      <p class="information-search">資料情報検索<span class="postscript">ISBNかCNII論文IDがお分かりでない方は、お手数ですが史料登録フォームの項目を直接入力ください。</span></p>
+    </div>
+    <div class="col-lg-6">
+      <div class="result">
+        <strong class="ISBN_search" id="title-search">本検索（ISBN使用）</strong>
+ 　　　　<div class = "panel-title">
+          <div class="ISBN_input">ISBN13：<input id="isbn" type="text" name="isbn" value="" autofocus>
+            <button id="getBookInfo" class="btn btn-default">書籍情報取得</button>
  　　      </div>
+ 　　      <div class="book__topic"><p id="thumbnail"></p></div>
+          <div class="book__topic">書籍名：<span id="title"></span></div>
+          <div class="book__topic">出版社：<span id="publisher"></span></div>
+          <div class="book__topic">巻：<span id="publisher"></span></div>
+          <div class="book__topic">シリーズ：<span id="series"></span></div>
+          <div class="book__topic">著者：<span id="author"></span></div>
+          <div class="book__topic">出版日：<span id="author"></span></div>
+          <div class="book__topic">サムネイルURI：<span id="cover"></span></div>
+          <div class="book__topic bottom">詳細：<span id="description"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="essay_result">
+        <strong class="NAID_search" id="essay_title-search">論文情報検索（NAID使用）</strong>
+        <div class = "panel-title">
+          <div class="NAID_input">CNII論文ID(NAID)：<input id="naid" type="text" name="naid" value="" autofocus>
+            <button id="getEssayInfo" class="btn btn-default">論文情報取得</button>
+          </div>
+          <div class="book__topic">論文タイトル：<span id="essay_title"></span></div>
+          <div class="book__topic">出版社名：<span id="essay_publisher"></span></div>
+          <div class="book__topic">刊行物名：<span id="essay_publicationName"></span></div>
+          <div class="book__topic">巻：<span id="essay_volume"></span></div>
+          <div class="book__topic">号：<span id="essay_number"></span></div>
+          <div class="book__topic">著者名：<span id="essay_creator"></span></div>
+          <div class="book__topic">出版日：<span id="essay_pubdate"></span></div>
+          <div class="book__topic">抄録：<span id="essay_description"></span>
+          </div>
+          <div class="book__topic"> 外部リンクに関する記述：<span id="essay_link"></span>
+          </div>
 
- 　　      <div class="book__topic">
- 　　        <p id="thumbnail"></p>
- 　　      </div>
-
- 　　      <div class="book__topic">書籍名：<span id="title"></span>
- 　　      </div>
-
- 　　      <div class="book__topic">出版社：<span id="publisher"></span>
- 　　      </div>
-
- 　　      <div class="book__topic">巻：<span id="publisher"></span>
- 　　      </div>
-
- 　　      <div class="book__topic">シリーズ：<span id="series"></span>
- 　　      </div>
-
- 　　      <div class="book__topic">著者：<span id="author"></span>
- 　　      </div>
-
- 　　      <div class="book__topic">出版日：<span id="author"></span>
- 　　      </div>
-
-    　     <div class="book__topic">サムネイルURI：<span id="cover"></span>
-    　     </div>
-
-    　     <div class="book__topic bottom">詳細：<span id="description"></span>
-           </div>
-
-         </div>
-       </div>
-      <h4><mark>史料情報編集</mark></h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12">
+    <h4><mark>史料情報編集</mark></h4>
       <%= form_with(model: @book , url: person_book_path, local: true) do |f| %>
         <%# エラーメッセージ　%>
         <%= render 'layouts/error_messages', model: f.object %>
         <%# ここまでエラ-メッセージ　%>
-        <p class ="form-title">■タイトル、著者名、出版社</p>
+        <p class ="book-form-title">■タイトル、著者名、出版社<span class="mandatory">必須</span></p>
         　<span class="form-a"><%= f.text_area :title ,id: "book-name" ,size:"100" %></span>
-        <p class ="form-title">■感想</p>
+        <p class ="book-form-title">■感想<span class="mandatory">必須</span></p>
         　<span class="form-a"><%= f.text_area :caption ,size:"100" %></span>
         <div class="grade_radio_button">
-        <p class ="form-title">■本の種類</p>
+        　<p class ="book-form-title">■本の種類<span class="mandatory">必須</span></p>
           <label><%= f.radio_button :grade, 'beginner' %> 初心者向け</label>
           <label><%= f.radio_button :grade, 'professional' %> その他（中級者以上向け）</label>
         </div>
-        <p class ="form-title"><strong>■カテゴリ</strong>(半角スペースを入力することで複数のタグを付けることができます)
-        </p>
+        <p class ="book-form-title">■感想絵</p>
+          <%= f.attachment_field :scribble %>
+        <p class ="book-form-title">■タグ<span class ="form-title">(半角スペースを入力することで複数のタグを付けることができます)
+        </span></p>
+        <p>例：聖徳太子 与謝野晶子 ルター</p>
           <div class="book-tags-field">
-        　  <%= f.text_field :name, value: @tag_list, size:"100" %>　<span>例：聖徳太子 与謝野晶子 ルター</span><br>
+            <%= f.text_field :name, value: @tag_list, size:"100" %>
           </div>
         <%# 非表示用サムネイルURL%>
         <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,style: "visibility: hidden", hide_label:"true" %></span><br>

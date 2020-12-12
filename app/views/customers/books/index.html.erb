@@ -15,33 +15,43 @@
         <%= f.submit "ワード検索" %>
       <% end %>
       <h4><mark> 本一覧 </mark></h4>
-      <% @books.each do |book| %>
-        <div>
-          <strong><%= book.title%></strong><br>
-          <%= book.caption %>
-        </td>
-        <%# ここからいいねボタン%>
-        <% if current_customer != nil && book.person_id != nil%>
-          <% if book.favorited_by?(current_customer) %>
-            <%= link_to dislike_path(person_id: book.person_id, book_id: book.id), method: :delete, class: "float-left dislike" do %>
-              <i class="fa fa-heart" aria-hidden="true" style="color: red;"> <%= book.favorites.count %> いいね</i>
+      <table class="table-responsive">
+        <tbody>
+        <% @books.each do |book| %>
+          <tr>
+            <td>
+              <%= attachment_image_tag book, :scribble, :fill, 150, 150, fallback: "/images/no_image.jpg" %>
+              <strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %></strong>
+            </td>
+            <td>
+              <div>
+                <strong><%= book.title%></strong><br>
+                <%= book.caption %>
+              <%# ここからいいねボタン%>
+              <% if current_customer != nil && book.person_id != nil%>
+                <% if book.favorited_by?(current_customer) %>
+                  <%= link_to dislike_path(person_id: book.person_id, book_id: book.id), method: :delete, class: "float-left dislike" do %>
+                    <i class="fa fa-heart" aria-hidden="true" style="color: red;"> <%= book.favorites.count %> いいね</i>
+                  <% end %>
+                <% else %>
+                  <%= link_to like_path(person_id: book.person_id, book_id: book.id), method: :post, class: "float-left like" do %>
+                    <i class="fa fa-heart-o"> <%= book.favorites.count %> いいね</i>
+                  <% end %>
+                <% end %>
+              <% end %>
+              </div>
+              <p class="tag_list_box">
+              <% book.tags.each do |tag| %>
+                <% if book.person_id != nil%>
+                  <%=link_to "#{tag.name}", person_path(book.person.id), class: 'smaller tag_list' %>
+                <% end %>
+              <% end %>
+              </p>
             <% end %>
-          <% else %>
-            <%= link_to like_path(person_id: book.person_id, book_id: book.id), method: :post, class: "float-left like" do %>
-              <i class="fa fa-heart-o"> <%= book.favorites.count %> いいね</i>
-            <% end %>
-          <% end %>
-        <% end %>
-        </div>
-        <strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %></strong>
-        <p class="tag_list_box">
-        <% book.tags.each do |tag| %>
-          <% if book.person_id != nil%>
-            <%=link_to "#{tag.name}", person_path(book.person.id), class: 'smaller tag_list' %>
-          <% end %>
-        <% end %>
-        </p>
-      <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

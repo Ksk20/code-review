@@ -53,22 +53,25 @@
 
       <%= form_with(model: @book ,id:"form-result", url: person_books_path, local: true) do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
-        <p class ="book-form-title">タイトル、著者名、出版社<span class="mandatory">必須</span></p>
+        <p class ="book-form-title">■タイトル、著者名、出版社<span class="mandatory">必須</span></p>
           <span class="form-a"><%= f.text_field :title ,id: "book-name" ,size:"100"%></span>
-        <p class ="book-form-title">感想<span class="mandatory">必須</span></p>
+        <p class ="book-form-title">■感想<span class="mandatory">必須</span></p>
           <span class="form-a"><%= f.text_area :caption ,id: "caption" ,size:"100"%>
           </span><br>
         <div class="grade_radio_button">
-          <p class ="book-form-title">本の種類<span class="mandatory">必須</span></p>
+          <p class ="book-form-title">■本の種類<span class="mandatory">必須</span></p>
           <label>
             <%= f.radio_button :grade, 'beginner' %> 初心者向け</label>
           <label>
             <%= f.radio_button :grade, 'professional' %> その他（中級者以上向け）</label>
         </div>
+        <p class ="book-form-title">■感想絵</p>
+          <%= f.attachment_field :scribble %>
         <%# 非表示用サムネイルURL%>
         <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,style: "visibility: hidden", hide_label:"true" %>
         </span><br>
-        <p class ="form-title">スペースを入力することで複数のタグを付けることができます。<br>
+        <p class ="book-form-title">■タグ</p>
+        <p class ="form-title">半角スペースを入力することで複数のタグを付けることができます。<br>
            例：聖徳太子 与謝野晶子 ルター</p>
         <%= f.text_field :name, size:"100"%>
         <%= f.submit '投稿' %>

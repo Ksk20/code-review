@@ -9,7 +9,6 @@ class Customers::BooksController < ApplicationController
         format.html
         format.json
       end
-
 	end
 
 	def index
@@ -78,7 +77,7 @@ class Customers::BooksController < ApplicationController
 
 private
 	def book_params
-    	params.require(:book).permit(:title,:caption,:image_url,:person_id,:customer_id,:grade)
+    	params.require(:book).permit(:title,:caption,:image_url,:person_id,:customer_id,:grade,:scribble)
   	end
   def correct_customer
    @book = current_customer.books.find_by(id: params[:id])
