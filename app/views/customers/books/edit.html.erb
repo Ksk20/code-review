@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <p class="information-search">資料情報検索<span class="postscript">ISBNかCNII論文IDがお分かりでない方は、お手数ですが史料登録フォームの項目を直接入力ください。</span></p>
+      <p class="information-search">資料情報検索<span class="postscript"> (ISBNかCNII論文IDがお分かりでない方は、お手数ですが史料登録フォームの項目を直接入力ください)</span></p>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6"><section class="search-box">
       <div class="result">
         <strong class="ISBN_search" id="title-search">本検索（ISBN使用）</strong>
  　　　　<div class = "panel-title">
@@ -18,12 +18,12 @@
           <div class="book__topic">著者：<span id="author"></span></div>
           <div class="book__topic">出版日：<span id="author"></span></div>
           <div class="book__topic">サムネイルURI：<span id="cover"></span></div>
-          <div class="book__topic bottom">詳細：<span id="description"></span>
+          <div class="book__topic">詳細：<span id="description"></span>
           </div>
         </div>
-      </div>
+      </div><section class="search-box">
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6"><section class="search-box">
       <div class="essay_result">
         <strong class="NAID_search" id="essay_title-search">論文情報検索（NAID使用）</strong>
         <div class = "panel-title">
@@ -41,9 +41,8 @@
           </div>
           <div class="book__topic"> 外部リンクに関する記述：<span id="essay_link"></span>
           </div>
-
         </div>
-      </div>
+      </div><section class="search-box">
     </div>
     <div class="col-lg-12">
     <h4><mark>史料情報編集</mark></h4>
@@ -70,8 +69,8 @@
           </div>
         <%# 非表示用サムネイルURL%>
         <span class="form-a" ><%= f.text_area :image_url ,disaled: "true", id: "image_url" ,style: "visibility: hidden", hide_label:"true" %></span><br>
-		      <%= f.submit "編集内容を保存する"%>
-	    <% end %>
+          <%= f.submit "編集内容を保存する"%>
+      <% end %>
     </div>
   </div>
 </div>

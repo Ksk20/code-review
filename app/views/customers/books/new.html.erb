@@ -1,15 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <p class="information-search">資料情報検索<span class="postscript">ISBNかCNII論文IDがお分かりでない方は、お手数ですが史料登録フォームの項目を直接入力ください。</span></p>
+      <p class="information-search">資料情報検索<span class="postscript"> (ISBNかCNII論文IDがお分かりでない方は、お手数ですが史料登録フォームの項目を直接入力ください)</span></p>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6"><section class="search-box">
       <div class="result">
         <strong class="ISBN_search" id="title-search">本検索（ISBN使用）</strong>
- 　　　　<div class = "panel-title">
+        <div class = "panel-title">
           <div class="ISBN_input">ISBN13：<input id="isbn" type="text" name="isbn" value="" autofocus>
-            <button id="getBookInfo" class="btn btn-default">書籍情報取得</button>
- 　　      </div>
+            <button id="getBookInfo" class="btn btn-default">書籍情報取得</button></div>
  　　      <div class="book__topic"><p id="thumbnail"></p></div>
           <div class="book__topic">書籍名：<span id="title"></span></div>
           <div class="book__topic">出版社：<span id="publisher"></span></div>
@@ -18,12 +17,11 @@
           <div class="book__topic">著者：<span id="author"></span></div>
           <div class="book__topic">出版日：<span id="author"></span></div>
           <div class="book__topic">サムネイルURI：<span id="cover"></span></div>
-          <div class="book__topic bottom">詳細：<span id="description"></span>
-          </div>
+          <div class="book__topic last">詳細：<span id="description"></span></div>
         </div>
-      </div>
+      </div></section>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6"><section class="search-box">
       <div class="essay_result">
         <strong class="NAID_search" id="essay_title-search">論文情報検索（NAID使用）</strong>
         <div class = "panel-title">
@@ -37,15 +35,11 @@
           <div class="book__topic">号：<span id="essay_number"></span></div>
           <div class="book__topic">著者名：<span id="essay_creator"></span></div>
           <div class="book__topic">出版日：<span id="essay_pubdate"></span></div>
-          <div class="book__topic">抄録：<span id="essay_description"></span>
-          </div>
-          <div class="book__topic"> 外部リンクに関する記述：<span id="essay_link"></span>
-          </div>
-
+          <div class="book__topic">抄録：<span id="essay_description"></span></div>
+          <div class="book__topic"> 外部リンクに関する記述：<span id="essay_link"></span></div>
         </div>
       </div>
-
-    </div>
+    </div></section>
     <div class="col-lg-12">
     <h4><mark><strong>新規史料登録</strong></mark></h4>
 
