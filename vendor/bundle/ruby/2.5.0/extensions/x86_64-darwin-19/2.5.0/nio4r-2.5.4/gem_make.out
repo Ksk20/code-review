@@ -1,5 +1,5 @@
 current directory: /Users/ksk/Desktop/work/vagrant/morenumare/vendor/bundle/ruby/2.5.0/gems/nio4r-2.5.4/ext/nio4r
-/Users/ksk/.rbenv/versions/2.5.7/bin/ruby -r ./siteconf20201214-98663-407o60.rb extconf.rb
+/Users/ksk/.rbenv/versions/2.5.7/bin/ruby -r ./siteconf20201217-5487-1o3w0xc.rb extconf.rb
 checking for unistd.h... yes
 checking for linux/aio_abi.h... no
 checking for sys/select.h... yes
@@ -298,4 +298,4 @@ linking shared-object nio4r_ext.bundle
 
 current directory: /Users/ksk/Desktop/work/vagrant/morenumare/vendor/bundle/ruby/2.5.0/gems/nio4r-2.5.4/ext/nio4r
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20201214-98663-1qmm86f
+/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20201217-5487-l0nrqr

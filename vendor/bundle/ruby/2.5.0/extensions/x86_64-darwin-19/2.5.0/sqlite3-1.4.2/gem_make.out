@@ -1,5 +1,5 @@
 current directory: /Users/ksk/Desktop/work/vagrant/morenumare/vendor/bundle/ruby/2.5.0/gems/sqlite3-1.4.2/ext/sqlite3
-/Users/ksk/.rbenv/versions/2.5.7/bin/ruby -r ./siteconf20201214-98663-1f0l09w.rb extconf.rb
+/Users/ksk/.rbenv/versions/2.5.7/bin/ruby -r ./siteconf20201217-5487-yomzs0.rb extconf.rb
 checking for sqlite3.h... yes
 checking for pthread_create() in -lpthread... yes
 checking for -ldl... yes
@@ -60,4 +60,4 @@ linking shared-object sqlite3/sqlite3_native.bundle
 
 current directory: /Users/ksk/Desktop/work/vagrant/morenumare/vendor/bundle/ruby/2.5.0/gems/sqlite3-1.4.2/ext/sqlite3
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 sqlite3_native.bundle ./.gem.20201214-98663-1t7jsek/sqlite3
+/usr/bin/install -c -m 0755 sqlite3_native.bundle ./.gem.20201217-5487-13i5nqp/sqlite3

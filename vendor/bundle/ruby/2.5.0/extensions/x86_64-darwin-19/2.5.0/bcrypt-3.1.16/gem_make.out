@@ -1,5 +1,5 @@
 current directory: /Users/ksk/Desktop/work/vagrant/morenumare/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.16/ext/mri
-/Users/ksk/.rbenv/versions/2.5.7/bin/ruby -r ./siteconf20201214-98663-c1ef1t.rb extconf.rb
+/Users/ksk/.rbenv/versions/2.5.7/bin/ruby -r ./siteconf20201217-5487-iswk9v.rb extconf.rb
 creating Makefile
 
 current directory: /Users/ksk/Desktop/work/vagrant/morenumare/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.16/ext/mri
@@ -36,4 +36,4 @@ linking shared-object bcrypt_ext.bundle
 
 current directory: /Users/ksk/Desktop/work/vagrant/morenumare/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.16/ext/mri
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 bcrypt_ext.bundle ./.gem.20201214-98663-okpzcg
+/usr/bin/install -c -m 0755 bcrypt_ext.bundle ./.gem.20201217-5487-a61oyo
