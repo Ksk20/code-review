@@ -1,14 +1,11 @@
 <div class="Block1">
   <div class="container">
     <div class="row">
-    <div class="col-10-lg col-lg-offset-1">
+    <div class="col-lg-10 col-lg-offset-1">
 
-    	<div class="how_to_use_top_title text-center" style="margin-top: 17px; margin-left: -30px"><strong>偉人登録の仕方</strong></div>
-    	<p class="infomation text-center">①新規登録後、右上の②『偉人登録』ボタンから、好きな歴史人物の③情報を入力しましょう。</p>
-    	<div class="flex-box">
-     	  <div class="how1"></div>
-    	  <div class="how2"></div>
-    	</div>
+      <div class="how_to_use_top_title text-center" style="margin-top: 17px"><strong>ゲストの方へ</strong></div>
+      <p class="infomation text-center" style="margin-bottom: 50px">
+      いらっしゃいませ！「Numare」はゲストの方も観覧は可能ですが、登録機能、いいね機能、一部サーチ機能など全ての機能を利用するには、<br>ログイン、もしくは新規登録をする必要があります。登録に必要な項目はニックネーム、パスワード、メールアドレスだけです!</p>
     </div>
     </div>
   </div>
@@ -17,10 +14,23 @@
 <div class="Block2">
   <div class="container">
     <div class="row">
-　    <div class="col-6-lg">
-        <div class="how_to_use_top_title text-center"><strong>偉人詳細ページで出来ること</strong></div>
-        <p class="infomation text-center">歴史上人物の詳細ページでは、④肖像画の登録、⑤作品の登録、⑥関連史料の登録ができます。</p>
-        <div class="how3"></div>
+      <div class="col-lg-6">
+        <div class="youtube-container">
+          <% iframe = content_tag(
+            :iframe,
+            '',
+            width: 600,
+            height: 420,
+            src: "https://youtu.be/BGPgj5YvC7s",
+            frameborder: 0,
+            allowfullscreen: true
+          ) %>
+          <%= content_tag(:div, iframe, class: 'youtube-container') %>
+        </div>
+      </div>
+      <div class="col-lg-6"  id="howbox">
+        <div class="how_to_use_top_title text-center"><strong>偉人登録の仕方</strong></div>
+        <p class="infomation text-center">ナレーション<strong>©︎ミコト　TwitterID（mikoto10181）</strong></p>
       </div>
     </div>
   </div>
@@ -28,25 +38,35 @@
 
 <div class="Block3">
   <div class="container">
-	<div class="row">
-	  <div class="col-6-lg">
-      <section class="how_to_use_top_title text-center"><strong>関連史料登録について</strong></section>
-      <p class="infomation text-center">
-	    ⑦史料の登録画面では本の情報と感想、本のレベルが入力できます。<br>
-	    また、SSIN（本に必ずついている9から始まる番号）をご存知の場合は、⑧検索フォームに入力頂くと、<br>本のタイトル、著者、出版社、サムネイルURLが自動で、入力フォームに追加されます。</p>
-      <div class="how4 "></div>
+  <div class="row">
+    <div class="col-lg-6" id="howbox">
+      <section class="how_to_use_top_title text-center"><strong>関連資料登録について</strong></section>
+      <p class="infomation text-center">ナレーション<strong>©︎ミコト　TwitterID（mikoto10181）</strong></p>
+    </div>
+    <div class="col-lg-6">
+      <div class="youtube-container ">
+        <% iframe = content_tag(
+          :iframe,
+          '',
+          width: 600,
+          height: 420,
+          src: "https://youtu.be/-5CBBoPqbA4",
+          frameborder: 0,
+          allowfullscreen: true
+        ) %>
+        <%= content_tag(:div, iframe, class: 'youtube-container') %>
+      </div>
     </div>
   </div>
 </div>
 </div>
 
-
 <div class="Block4">
   <div class="container">
     <div class="row">
-  	  <strong><div class="text-center block4_infomation">
-	      情報を登録して、好きな歴史上の人物のページを充実させましょう！
-	    </div>
+      <strong><div class="text-center block4_infomation">
+        情報を登録して、好きな歴史上の人物のページを充実させましょう！
+      </div>
       </strong>
     </div>
   </div>

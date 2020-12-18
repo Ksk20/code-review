@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-ig-12">
+    <div class="col-lg-5">
 
       <h4><mark>偉人登録</mark>
         <span class="attention">（※マークは入力必須項目です）</span>
@@ -28,7 +28,21 @@
       <p class="form-title">紹介文</p>
         <span class="form-a"><%= f.text_area :introduction %></span><br>
           <span class="form-a"><%= f.submit '保存', class: "btn-z" %></span>
-	　  <% end %>
+  　  <% end %>
+    </div>
+    <div class="col-lg-7">
+      <div class="youtube-container">
+        <% iframe = content_tag(
+          :iframe,
+          '',
+          width: 660,
+          height: 450,
+          src: "https://youtu.be/BGPgj5YvC7s",
+          frameborder: 0,
+          allowfullscreen: true
+        ) %>
+        <%= content_tag(:div, iframe, class: 'youtube-container') %>
+      </div>
     </div>
   </div>
 </div>

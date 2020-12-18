@@ -3,11 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .tipic{
-	font-size: 21px;
-	padding-top: 20px;
-	color: #232323;
-	border-bottom: solid 3px #078080;
-  	position: relative;
+  font-size: 21px;
+  padding-top: 20px;
+  color: #232323;
+  border-bottom: solid 3px #078080;
+    position: relative;
 }
 
 .tipic:after {
@@ -79,7 +79,7 @@
 
 .how_to_use_top_title.text-center{
   text-decoration: underline;
-  font-size: 18px;
+  font-size: 28px;
   margin-bottom: 10px;
 }
 .infomation.text-center{
@@ -136,4 +136,8 @@
 
 .btn.taikai{
    margin-top: 60px;
+}
+
+#howbox{
+  margin-top: 200px;
 }

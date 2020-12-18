@@ -1,6 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
+      <div class="youtube-container ">
+        <% iframe = content_tag(
+          :iframe,
+          '',
+          width: 660,
+          height: 450,
+          src: "https://youtu.be/-5CBBoPqbA4?start=29",
+          frameborder: 0,
+          allowfullscreen: true
+        ) %>
+        <%= content_tag(:div, iframe, class: 'youtube-container') %>
+      </div>
       <p class="information-search">資料情報検索<span class="postscript"> (ISBNかCNII論文IDがお分かりでない方は、お手数ですが史料登録フォームの項目を直接入力ください)</span></p>
     </div>
     <div class="col-lg-6"><section class="search-box">

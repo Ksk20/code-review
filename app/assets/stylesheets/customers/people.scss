@@ -3,41 +3,41 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .top_margin{
-	padding-top: 10px;
+  padding-top: 10px;
 }
 .btn {
-	background: #f45d48;
-	color: #fffffe;
+  background: #f45d48;
+  color: #fffffe;
 }
 
 .btn.peoplee_edit_btn {
-	background: #078080;
-	color: #fffffe;
+  background: #078080;
+  color: #fffffe;
 }
 
 .btn.edit_btn {
-	background: #078080;
-	color: #fffffe;
-	margin-left: -25%;
+  background: #078080;
+  color: #fffffe;
+  margin-left: -25%;
 }
 
 .book_add_button{
-	padding-left: 85%;
+  padding-left: 85%;
 }
 
 .button3{
-	padding-top: 15px;
+  padding-top: 15px;
 }
 
 .btn-z {
-	background: #f45d48;
-	color: #fffffe;
+  background: #f45d48;
+  color: #fffffe;
 }
 .portrait_add_btn {
-	padding-top: 10px
+  padding-top: 10px
 }
 .introduction{
-	font-size: 16px
+  font-size: 16px
 }
 .border-width-bold {
     border-width: 3px;
@@ -60,14 +60,14 @@ h4:first-letter {
   color: #078080;
 }
 p.form-title{
-	margin-top: 10px;
+  margin-top: 10px;
 }
 .portrait-caption{
-	background: #f8f5f2;
-	width: 100%;
-	padding: 20px;
-	color: f45d48;
-	border-radius: 10px;
+  background: #f8f5f2;
+  width: 100%;
+  padding: 20px;
+  color: f45d48;
+  border-radius: 10px;
 }
 .people_name_search{
   margin-top: 20px;
@@ -75,40 +75,40 @@ p.form-title{
 }
 
 .color_box{
-	background: #f8f5f2;
-	border-radius: 10px;
+  background: #f8f5f2;
+  border-radius: 10px;
   padding: 1px;
   border: solid 4px #ffffff;
 }
 
 a#people_name{
-	font-size: 110%;
-	color: #078080;
-	text-decoration : underline;
-	border-bottom: 2px;
-	margin-left: 20%;
+  font-size: 110%;
+  color: #078080;
+  text-decoration : underline;
+  border-bottom: 2px;
+  margin-left: 20%;
 }
 
 .attention{
-	font-size: 70%;
+  font-size: 70%;
 }
 
 .ISBN_search{
-	font-size: 16px;
+  font-size: 16px;
 }
 
 .ISBN_input{
-	margin-bottom: -20px;
+  margin-bottom: -20px;
 }
 
 .book__topic{
-	font-size: 14px;
+  font-size: 14px;
 }
 .book__topic.bottom{
-	margin-bottom: 3%;
-	}
+  margin-bottom: 3%;
+  }
 .grade_radio_button{
-	margin-bottom: 1.5%;
+  margin-bottom: 1.5%;
 }
 
 .small_edit_btn{
@@ -162,4 +162,8 @@ a#people_name{
 .modal-img_footer { //表示予定のテキストとボタンを中央揃え
  padding: .5em;
  text-align: center;
+}
+
+.youtube-container{
+  margin-top: 40px;
 }
