@@ -43,7 +43,7 @@
       <ul id="navbar" class="nav navbar-nav navbar-left navbar-collapse collapse">
         <% if customer_signed_in? %>
           <li class='navbox'>
-           <%= link_to 'マイページ', "#", class:"" %></li>
+           <%= link_to 'マイページ', customer_path(current_customer.id), class:"" %></li>
           <li class='navbox'>
             <% if unchecked_notifications.any? %>
               <i class="fa fa-circle"></i>
