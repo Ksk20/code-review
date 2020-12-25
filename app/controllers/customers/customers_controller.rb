@@ -1,5 +1,5 @@
 class Customers::CustomersController < ApplicationController
-	before_action :authenticate_customer!
+	before_action :authenticate_customer!, except: [:show]
 	before_action :correct_customer, only: [:edit, :update, :destroy]
 
 	def show
@@ -35,7 +35,7 @@ class Customers::CustomersController < ApplicationController
 	end
 private
 	def customer_params
-    	params.require(:customer).permit(:name,:introduction,:image_id,:back_image_id,:is_member,:email)
+    	params.require(:customer).permit(:name,:introduction,:image,:back_image,:is_member,:email)
   	end
 
   	def correct_customer

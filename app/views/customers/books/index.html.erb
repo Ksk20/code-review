@@ -21,7 +21,7 @@
           <tr>
             <td>
               <%= attachment_image_tag book, :scribble, :fill, 150, 150, fallback: "/images/no_image.jpg" %>
-              <strong>投稿者　<%= link_to book.customer.name, customer_path(book.customer.id) %></strong>
+              <div><strong>投稿者 <%= link_to book.customer.name, customer_path(book.customer.id) %></strong></div>
             </td>
             <td>
               <div>
@@ -52,6 +52,7 @@
           </tr>
         </tbody>
       </table>
+      <%= paginate @books %>
     </div>
   </div>
 </div>

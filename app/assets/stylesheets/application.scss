@@ -18,7 +18,29 @@
 @import "bootstrap";
 
 
+.btn-push {
+  display: inline-block;
+  width: 140px;
+  padding: 0.8em;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background:#f45d48;
+  border-bottom:4px solid #AD2022;
+  border-radius: 4px;
+}
 
+.btn-push:hover {
+   cursor: pointer;
+   text-decoration: none;
+   background:#AD2022;
+   transform: translate3d(0, 4px, 0);
+   border-bottom: none;
+}
+
+.navbar-toggle.collapsed{
+  background-color: #078080;
+}
 .btn-circle-border-double {
   margin-top: 15px;
   display: inline-block;
@@ -135,7 +157,7 @@ li.navbox.test-user{
   font-size: 20px;
   padding-left: 5px;
 }
-hr{
+.top_hr{
   margin-top: -10px;
   height: 5px;
   background-color: #232323;
