@@ -1,4 +1,5 @@
 class Customers::HomesController < ApplicationController
+
 	def top
 		@people = Person.all.order(created_at: :desc).page(params[:page]).per(6)
 		@portraits = Portrait.all
@@ -12,9 +13,12 @@ class Customers::HomesController < ApplicationController
 	end
 
 	def about
-
 	end
 
 	def how_to_use
 	end
+
+	def privacy
+	end
+
 end

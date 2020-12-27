@@ -111,8 +111,11 @@
       <% @portraits.each do |portrait| %>
 
           <%= attachment_image_tag portrait, :image, :fill, 100, 100 %>
-            <% if portrait.customer.id == current_customer.id %>
-              <%= link_to "Destroy", person_portrait_path(portrait.customer.id,portrait), method: :delete, class: "btn btn-default" %><% end %>
+            <% if current_customer != nil && portrait.customer.id != nil %>
+              <% if portrait.customer.id == current_customer.id %>
+                <%= link_to "Destroy", person_portrait_path(portrait.customer.id,portrait), method: :delete, class: "btn btn-default" %>
+              <% end %>
+            <% end %>
         <% end %>
     </p>
   </div>

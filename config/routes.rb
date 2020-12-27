@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/' => "customers/homes#top", as: 'home'
   get 'homes/about' => "customers/homes#about",as: 'about'
   get 'homes/how_to_use' => "customers/homes#how_to_use",as: 'how_to_use'
+  get 'homes/privacy' => "customers/homes#privacy",as: 'privacy'
   get '/people/search' => 'customers/people#search'
   get '/books/search' => 'customers/books#search'
   post '/people/:person_id/books/:book_id/favorites' => "customers/favorites#create", as: "like"
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
       resources :books, only:[:new,  :create, :edit, :update, :destroy]
     end
   end
-
     devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
