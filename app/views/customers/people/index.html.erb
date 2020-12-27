@@ -14,7 +14,7 @@
 	  	<% @people.each do |person| %>
           <div class="col-lg-3 color_box">
             <% [person.portraits.sample].each do |portrait| %>
-              <%= attachment_image_tag portrait, :image, :fill, 90, 100, fallback: "/images/no_image.jpg" %>
+              <%= attachment_image_tag portrait, :image, :fill, 100, 100, fallback: "/images/no_image.jpg" %>
 	        <% end %>
 	        <span><%= link_to person.name, person_path(person.id), id: "people_name"%>
             </span>
