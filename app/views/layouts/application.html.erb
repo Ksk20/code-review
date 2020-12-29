@@ -14,6 +14,7 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
       <span class="sr-only">Toggle navigation</span>
+      <span class="toggler__txt">メニュー</span>
       <% if customer_signed_in? %>
         <span class="マイページ"></span>
         <span class="通知"></span>
@@ -38,7 +39,7 @@
       <% end %>
       </button>
       <%= link_to image_tag("/images/logo.png", class: "logo" ,size: '95x95'), home_path %>
-      <strong><%= link_to "偉人登録", new_person_path, class:"btn-push" %>
+      <%#<strong><%= link_to "偉人登録", new_person_path, class:"btn-push" %>
       </strong>
     </div>
     <nav>
@@ -60,10 +61,10 @@
             <%= link_to "本検索", books_path, class:"" %></li>
           <li class='navbox'>
             <%= link_to "ログアウト", destroy_customer_session_path, class:"", method: :delete %></li>
-          <%#<li class='navbox_people'>
-            <strong><%= link_to "偉人登録", new_person_path, class:"btn-push" %>
-            <%#</strong>
-          </li>%>
+          <li class='navbox_people'>
+            <strong><%= link_to "偉人登録", new_person_path, class:"btn-circle-border-double" %>
+           </strong>
+          </li>
         <% elsif  admin_signed_in? %>
           <li class='navbox'>
             <%= link_to '登録者一覧', admins_customers_path, class:"" %></span></li>
@@ -88,14 +89,10 @@
             <span><%= link_to "ログイン", new_customer_session_path, class:"l-button"%>
             </span>
           </li>
-          <li class='navbox test-user'>
-            <strong>ゲスト会員ログイン情報</strong><br>
-            Email: test@test.com   |   パスワード: 111111
+          <li class='navbox_people'>
+            <strong><%= link_to "偉人登録", new_person_path, class:"btn-circle-border-double"%>
+            </strong>
           </li>
-          <%#<li class='navbox_people'>
-            <strong><%= link_to "偉人登録", new_person_path, class:"btn-push" %>
-            <%#</strong>
-          </li>%>
         <% end %>
       </ul>
     </nav>

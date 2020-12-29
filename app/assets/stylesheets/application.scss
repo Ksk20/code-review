@@ -38,11 +38,16 @@
    border-bottom: none;
 }
 
+.toggler__txt{
+  font-size : 0.5em;
+}
+
 .navbar-toggle.collapsed{
-  background-color: #078080;
+
 }
 .btn-circle-border-double {
   margin-top: 15px;
+  margin-left: 20px;
   display: inline-block;
   text-decoration: none;
   color: #f45d48;
@@ -60,7 +65,6 @@
   -webkit-transform: rotateY(360deg);
   transform: rotateY(360deg);
 }
-
 
 header.navbar.navbar-fixed-top{
   background: #f8f5f2;
@@ -104,9 +108,9 @@ li.navbox.test-user{
   appearance: none;
   border: solid;
   border-width: 1.5px;
-  border-color: #f45d48;
+  border-color: #078080;
   border-radius: 20px;
-  color: #f45d48;
+  color: #078080;
   padding: 9px 14px;
   font-size: 15px;
 }
@@ -115,7 +119,7 @@ li.navbox.test-user{
   appearance: none;
   border: 0;
   border-radius: 20px;
-  background: #f45d48;
+  background: #078080;
   color: #fffffe;
   padding: 10.5px 15.5px;
   font-size: 15px;
@@ -136,6 +140,22 @@ li.navbox.test-user{
   background-image: image-url("image3.jpg");
   height: 100%;
 }
+
+.main_visual4{
+  background-image: image-url("image4.jpg");
+  height: 100%;
+}
+
+.main_visual5{
+  background-image: image-url("image5.jpg");
+  height: 100%;
+}
+
+.main_visual6{
+  background-image: image-url("image6.jpg");
+  height: 100%;
+}
+
 
 .subbox{
   width: 550px;
@@ -207,6 +227,7 @@ li.navbox.test-user{
   background-image: image-url("3-3.jpg");
   height: 100%;
 }
+
 body {
   color: #232323;
   padding-top: 110px;
@@ -230,4 +251,8 @@ footer.footer{
 
 .logo{
   margin-top: 7px;
+}
+
+.test-user{
+  color: #078080;
 }

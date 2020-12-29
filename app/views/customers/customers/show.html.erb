@@ -54,17 +54,18 @@
         <% if book.person_id != nil %>
           <%= link_to book.person.name, person_path(book.person.id) %>
         <% end %><br>
-        <div class="edit-deletebtn">
-          <% if current_customer != nil && book.customer.id == current_customer.id && book.person_id != nil %>
-            <%= link_to "編集する", edit_person_book_path(person_id: book.person_id, id: book.id), class: 'small_edit_btn' %>
-          <% end %>
-          <% if current_customer != nil && book.customer.id == current_customer.id %>
-            <%= link_to "消去", book_path(id: book.id, customer_id: book.customer.id), method: :delete, data: { confirm: '本当に消去してよろしいですか?'} ,class: 'small_delete_btn' %>
-          <% end %>
-        </div>
       </th>
       <td><%= book.title%></td>
-      <td><%= book.caption %></td>
+      <td><%= book.caption %>
+        <div class="edit-deletebtn">
+          <% if current_customer != nil && book.customer.id == current_customer.id && book.person_id != nil %>
+            <%= link_to "編集する", edit_person_book_path(person_id: book.person_id, id: book.id), class: 'customer_small_edit_btn' %>
+          <% end %>
+          <% if current_customer != nil && book.customer.id == current_customer.id %>
+            <%= link_to "消去", book_path(id: book.id, customer_id: book.customer.id), method: :delete, data: { confirm: '本当に消去してよろしいですか?'} ,class: 'customer_small_delete_btn' %>
+          <% end %>
+        </div>
+      </td>
       <td>
         <%= attachment_image_tag book, :scribble, :fill, 125, 125, fallback: "/images/no_image.jpg" %>
         <!-- Button trigger modal -->

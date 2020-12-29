@@ -129,6 +129,25 @@ a#people_name{
   padding: 10px;
 }
 
+.customer_small_edit_btn{
+  color: #f8f5f2;
+  width:500px;
+  height:300px;
+  background: #078080;
+  border-radius:30px;
+  font-size: 12px;
+  padding: 10px;
+}
+.customer_small_delete_btn{
+  color: #f8f5f2;
+  width:500px;
+  height:300px;
+  background: #232323;
+  border-radius:4px;
+  font-size: 12px;
+  padding: 10px;
+}
+
 .creation_small_edit_btn{
   color: #f8f5f2;
   width:500px;
@@ -139,7 +158,6 @@ a#people_name{
   padding: 10px;
   margin-top: 5%;
 }
-
 .creation_small_delete_btn{
   color: #f8f5f2;
   width:500px;

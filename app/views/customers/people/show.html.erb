@@ -108,50 +108,50 @@
           <%= link_to "消去", person_book_path(person_id: params[:id], id: book), method: :delete ,class: 'small_delete_btn' %><% end %>
         </td>
         <td>
-        <%= attachment_image_tag book, :scribble, :fill, 125, 125, fallback: "/images/no_image.jpg" %><br>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scribbleModal<%= book.id %>">
-          拡大する
-        </button>
-        <!-- Modal -->
-        <div class="modal fade" id="scribbleModal<%= book.id %>" tabindex="-1" role="dialog" aria-labelledby="scribbleModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="scribbleModalLabel"></h4>
-              </div>
-              <div class="modal-body">
-                <%= attachment_image_tag book, :scribble, :fill, 1920, 1440, class: 'img-responsive thumbnail　aligncenter size-full wp-image-425' ,style: "cursor:pointer" %>
-                <div class="modal fade" id="image_Modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                  <div class="modal-dialog modal-lg modal-middle">
-                    <div class="modal-content">
-                      <%= attachment_image_tag book, :scribble, :fill, 1920, 1440, class: 'aligncenter size-full wp-image-425', style: "cursor:pointer" %>
-                    </div>
-                    <div class="modal-img_footer">
-                      <p></p>
-                      <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-        <!-- ここまで　モーダルウィンドウ -->
         </td>
         <td>
 <%# ここからAPI記述 %>
-          <section class="book-images-frame">
+        　<section class="book-images-frame">
             <% if book.image_url? %>
               <%= image_tag book.image_url, class: "book-images-cover", style:"height:200px; width: 150px;" %>
-            <% else %>
-              <%= image_tag '/images/no_image.jpg', size: '150x150' %>
             <% end %>
           </section>
+          <% if book.scribble_id? %>
+            <%= attachment_image_tag book, :scribble, :fill, 125, 125, fallback: "/images/no_image.jpg" %><br>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scribbleModal<%= book.id %>">
+              拡大する
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="scribbleModal<%= book.id %>" tabindex="-1" role="dialog" aria-labelledby="scribbleModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="scribbleModalLabel"></h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= attachment_image_tag book, :scribble, :fill, 1920, 1440, class: 'img-responsive thumbnail　aligncenter size-full wp-image-425' ,style: "cursor:pointer" %>
+                    <div class="modal fade" id="image_Modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                      <div class="modal-dialog modal-lg modal-middle">
+                        <div class="modal-content">
+                          <%= attachment_image_tag book, :scribble, :fill, 1920, 1440, class: 'aligncenter size-full wp-image-425', style: "cursor:pointer" %>
+                        </div>
+                        <div class="modal-img_footer">
+                          <p></p>
+                          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        <!-- ここまで　モーダルウィンドウ -->
+          <% end %>
 <%# ここまでAPI記述 %>
         </td>
       </tr>

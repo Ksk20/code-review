@@ -1,82 +1,82 @@
 
-			<div class="skbox">
-			   <div class="theTarget">
-			     <div class="main_visual1" ></div>
-			     <div class="main_visual2" ></div>
-			     <div class="main_visual3" ></div>
-			   </div>
-			</div>
-			<div class="case-title text-center">
-            		<span style="font-size: 35px;">
-            			『Numare』</span>の使いどころ
-            </div>
-            <div class="case-container">
+<div class="skbox">
+  <div class="theTarget">
+    <div class="main_visual1" ></div>
+    <div class="main_visual2" ></div>
+    <div class="main_visual3" ></div>
+    <div class="main_visual4" ></div>
+    <div class="main_visual5" ></div>
+    <div class="main_visual6" ></div>
+  </div>
+</div>
+<div class="case-title text-center">
+  <span style="font-size: 35px;">『Numare』</span>の使いどころ
+</div>
+<div class="case-container">
+  <div class="subbox">
+    <p><strong>Case<span style="font-size: 20px;">1</span></strong><span class="case-topic">資料の布教</span></p>
+  	<hr class="top_hr">
+    <div class="theTarget">
+      <div class="sub1-1" ></div>
+      <div class="sub1-2" ></div>
+      <div class="sub1-3" ></div>
+    </div>
+  </div>
+  <div class="subbox">
+  	<p><strong>Case<span style="font-size: 20px;">2</span></strong><span class="case-topic">手が出しにくい時……</span></p>
+  	<hr class="top_hr">
+    <div class="theTarget">
+      <div class="sub2-1" ></div>
+      <div class="sub2-2" ></div>
+      <div class="sub2-3" ></div>
+    </div>
+  </div>
+  <div class="subbox" style="margin-right: 15px;">
+    <p><strong>Case<span style="font-size: 20px;">3</span></strong><span class="case-topic">いざという時に！</span></p>
+    <hr class="top_hr">
+    <div class="theTarget">
+      <div class="sub3-1" ></div>
+      <div class="sub3-2" ></div>
+      <div class="sub3-3" ></div>
+    </div>
+  </div>
+</div>
 
-				<div class="subbox">
-					<p><strong>Case<span style="font-size: 20px;">1</span></strong><span class="case-topic">資料の布教</span></p>
-					<hr class="top_hr">
-				   <div class="theTarget">
-				     <div class="sub1-1" ></div>
-				     <div class="sub1-2" ></div>
-				     <div class="sub1-3" ></div>
-				   </div>
-				</div>
-				<div class="subbox">
-					<p><strong>Case<span style="font-size: 20px;">2</span></strong><span class="case-topic">手が出しにくい時……</span></p>
-					<hr class="top_hr">
-				   <div class="theTarget">
-				     <div class="sub2-1" ></div>
-				     <div class="sub2-2" ></div>
-				     <div class="sub2-3" ></div>
-				   </div>
-				</div>
-				<div class="subbox" style="margin-right: 15px;">
-					<p><strong>Case<span style="font-size: 20px;">3</span></strong><span class="case-topic">いざという時に！</span></p>
-					<hr class="top_hr">
-				   <div class="theTarget">
-				     <div class="sub3-1" ></div>
-				     <div class="sub3-2" ></div>
-				     <div class="sub3-3" ></div>
-				   </div>
-				</div>
-			</div>
 <div class="container" style="margin-top: 70px">
-	<div class="row">
-		<div class="col-lg-12">
-			<h4>新着偉人</h4>
-				<div class="row">
-					<% @people.each do |person| %>
-		                	<div class="col-lg-2" style="align-items: flex-end;">
-					    		<% [person.portraits.sample].each do |portrait| %>
-        						<%= attachment_image_tag portrait, :image, :fill, 150, 150, fallback: "/images/no_image.jpg" %>
-        						<%= link_to person.name, person_path(person.id) %>
-       							<% end %>
-       						</div>
-					<% end %>
-					<%= paginate @people %>
-				</div>
-
-			<p class="tipic">肖像画募集中</p>
-
-				<div class="row">
-					<% @advertisements.each do |person| %>
-		                <div class="col-lg-2">
-		                	<%= image_tag '/images/no_image.jpg', size: '100x100' %>
-		                		<%#= attachment_image_tag person.portraits.sample, :image, :fill, 150, 150, fallback: "no_image.jpg" %>
-		                	<%= link_to person.name, person_path(person.id) %>
-       					</div>
-					<% end %>
-				</div>
-			<p class="tipic">史料募集中</p>
-				<% @unregistereds.each do |person| %>
-		                <div class="col-lg-2">
-		                	<% [person.portraits.sample].each do |portrait| %>
-		                	<%= attachment_image_tag portrait, :image, :fill, 150, 150,fallback: "/images/no_image.jpg" %>
-        					<%= link_to person.name, person_path(person.id) %>
-        					<% end %>
-       					</div>
-				<% end %>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-lg-12">
+	  <h4>新着偉人</h4>
+	  <div class="row">
+	  	<% @people.each do |person| %>
+		  <div class="col-lg-2" style="align-items: flex-end;">
+	  	    <% [person.portraits.sample].each do |portrait| %>
+        	  <%= attachment_image_tag portrait, :image, :fill, 140, 140, fallback: "/images/no_image.jpg" %><br>
+        	  <%= link_to person.name, person_path(person.id) %>
+        	<% end %>
+          </div>
+	  	<% end %>
+	  	<%= paginate @people %>
+	  </div>
+	  <p class="tipic">肖像画募集中</p>
+	  <div class="row">
+	    <% @advertisements.each do |person| %>
+          <div class="col-lg-2">
+            <%= image_tag '/images/no_image.jpg', size: '100x100' %>
+            <%#= attachment_image_tag person.portraits.sample, :image, :fill, 150, 150, fallback: "no_image.jpg" %>
+            <%= link_to person.name, person_path(person.id) %>
+          </div>
+	    <% end %>
+	  </div>
+	  <p class="tipic">史料募集中</p>
+	  <% @unregistereds.each do |person| %>
+		<div class="col-lg-2">
+		<% [person.portraits.sample].each do |portrait| %>
+		  <%= attachment_image_tag portrait, :image, :fill, 140, 140,fallback: "/images/no_image.jpg" %><br>
+          <%= link_to person.name, person_path(person.id) %>
+        <% end %>
+        </div>
+	  <% end %>
+    </div>
+  </div>
 </div>
 
