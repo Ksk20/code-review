@@ -4,31 +4,31 @@
 			<h4 style="padding-bottom: 10px;">
 				<span style="background-color:#D5D7DD;"><%= @customer.name %>さんの会員詳細</span>
 			</h4>
-            <table style="margin-top: 30px; margin-bottom: 30px;">
-            	<tr>
-            		<th style="padding-bottom: 10px">顧客ID</th>
-            		<td style="padding-bottom: 10px; font-size: 17px;"><%= @customer.id %>
-            			<% if @customer.is_member == "Available" %>
-            				有効
-            			<% else %>
-            				無効
-            			<% end %>
-            		</td>
-            	</tr>
-            	<tr>
-            		<th style="padding-bottom: 10px">氏名　</th>
-            		<td style="padding-bottom: 10px; font-size: 17px;">
-            			<%= @customer.name %>
-            		</td>
-            	</tr>
-            	<tr>
-            		<th style="padding-bottom: 10px">自己紹介　</th>
-            		<td style="padding-bottom: 10px; font-size: 17px;">
-            			<%= @customer.introduction %>
-            		</td>
-            	</tr>
-            </table>
-            <%= link_to "編集する",edit_admins_customer_path(@customer) ,class: "btn btn-primary" %>
-        </div>
+                  <table style="margin-top: 30px; margin-bottom: 30px;">
+                  	<tr>
+                  		<th style="padding-bottom: 10px">顧客ID</th>
+                  		<td style="padding-bottom: 10px; font-size: 17px;"><%= @customer.id %>
+                  			<% if @customer.is_member == "Available" %>
+                  				有効
+                  			<% else %>
+                  				無効
+                  			<% end %>
+                  		</td>
+                  	</tr>
+                  	<tr>
+                  		<th style="padding-bottom: 10px">氏名　</th>
+                  		<td style="padding-bottom: 10px; font-size: 17px;">
+                  			<%= @customer.name %>
+                  		</td>
+                  	</tr>
+                  	<tr>
+                  		<th style="padding-bottom: 10px">自己紹介　</th>
+                  		<td style="padding-bottom: 10px; font-size: 17px;">
+                  			<%= @customer.introduction %>
+                  		</td>
+                  	</tr>
+                  </table>
+                  <%= link_to "編集する",edit_admins_customer_path(@customer) ,class: "btn btn-primary" %>
+            </div>
 	</div>
 </div>

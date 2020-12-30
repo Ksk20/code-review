@@ -30,129 +30,129 @@
       </table>
     </div>
     <div class="col-sm-12">
-<!-- タブ表示設定　-->
-<ul class="nav nav-tabs">
-  <li><a href="#tabA" data-toggle="tab">投稿史料一覧</a></li>
-  <li><a href="#tabB" data-toggle="tab">投稿肖像画一覧</a></li>
-  <li><a href="#tabC" data-toggle="tab">いいね一覧</a></li>
-</ul>
-<div class="tab-content">
-  <div class="tab-pane active" id="tabA">
-    <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>偉人名</th>
-      <th>タイトル</th>
-      <th>感想/説明</th>
-      <th></th>
-    </tr>
-  </thead>
-  <% @books.each do |book| %>
-  <tbody>
-    <tr>
-      <th>
-        <% if book.person_id != nil %>
-          <%= link_to book.person.name, person_path(book.person.id) %>
-        <% end %><br>
-      </th>
-      <td><%= book.title%></td>
-      <td><%= book.caption %>
-        <div class="edit-deletebtn">
-          <% if current_customer != nil && book.customer.id == current_customer.id && book.person_id != nil %>
-            <%= link_to "編集する", edit_person_book_path(person_id: book.person_id, id: book.id), class: 'customer_small_edit_btn' %>
-          <% end %>
-          <% if current_customer != nil && book.customer.id == current_customer.id %>
-            <%= link_to "消去", book_path(id: book.id, customer_id: book.customer.id), method: :delete, data: { confirm: '本当に消去してよろしいですか?'} ,class: 'customer_small_delete_btn' %>
-          <% end %>
-        </div>
-      </td>
-      <td>
-        <%= attachment_image_tag book, :scribble, :fill, 125, 125, fallback: "/images/no_image.jpg" %>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scribbleModal<%= book.id %>">
-          拡大する
-        </button>
-        <!-- Modal -->
-        <div class="modal fade" id="scribbleModal<%= book.id %>" tabindex="-1" role="dialog" aria-labelledby="scribbleModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="scribbleModalLabel"></h4>
+
+      <!-- タブ表示設定　-->
+      <ul class="nav nav-tabs">
+        <li><a href="#tabA" data-toggle="tab">投稿史料一覧</a></li>
+        <li><a href="#tabB" data-toggle="tab">投稿肖像画一覧</a></li>
+        <li><a href="#tabC" data-toggle="tab">いいね一覧</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tabA">
+          <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>偉人名</th>
+            <th>タイトル</th>
+            <th>感想/説明</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @books.each do |book| %>
+        <tbody>
+          <tr>
+            <th>
+              <% if book.person_id != nil %>
+                <%= link_to book.person.name, person_path(book.person.id) %>
+              <% end %><br>
+            </th>
+            <td><%= book.title%></td>
+            <td><%= book.caption %>
+              <div class="edit-deletebtn">
+                <% if current_customer != nil && book.customer.id == current_customer.id && book.person_id != nil %>
+                  <%= link_to "編集する", edit_person_book_path(person_id: book.person_id, id: book.id), class: 'customer_small_edit_btn' %>
+                <% end %>
+                <% if current_customer != nil && book.customer.id == current_customer.id %>
+                  <%= link_to "消去", book_path(id: book.id, customer_id: book.customer.id), method: :delete, data: { confirm: '本当に消去してよろしいですか?'} ,class: 'customer_small_delete_btn' %>
+                <% end %>
               </div>
-              <div class="modal-body">
-                <%= attachment_image_tag book, :scribble, :fill, 1920, 1440, class: 'img-responsive thumbnail　aligncenter size-full wp-image-425' ,style: "cursor:pointer" %>
-                <div class="modal fade" id="image_Modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                  <div class="modal-dialog modal-lg modal-middle">
-                    <div class="modal-content">
-                      <%= attachment_image_tag book, :scribble, :fill, 1920, 1440, class: 'aligncenter size-full wp-image-425', style: "cursor:pointer" %>
+            </td>
+            <td>
+              <%= attachment_image_tag book, :scribble, :fill, 125, 125, fallback: "/images/no_image.jpg" %>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scribbleModal<%= book.id %>">
+                拡大する
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="scribbleModal<%= book.id %>" tabindex="-1" role="dialog" aria-labelledby=" scribbleModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="scribbleModalLabel"></h4>
                     </div>
-                    <div class="modal-img_footer">
-                      <p></p>
-                      <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    <div class="modal-body">
+                      <%= attachment_image_tag book, :scribble, :fill, 1920, 1440, class: 'img-responsive thumbnail　aligncenter size-full wp-image-425' ,style: "cursor:pointer" %>
+                      <div class="modal fade" id="image_Modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                        <div class="modal-dialog modal-lg modal-middle">
+                          <div class="modal-content">
+                            <%= attachment_image_tag book, :scribble, :fill, 1920, 1440, class: 'aligncenter size-fullwp-image-425', style: "cursor:pointer" %>
+                          </div>
+                          <div class="modal-img_footer">
+                            <p></p>
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
+              <!-- ここまで　モーダルウィンドウ -->
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+        </table>
         </div>
-        <!-- ここまで　モーダルウィンドウ -->
-      </td>
-    </tr>
-  </tbody>
-  <% end %>
-  </table>
-  </div>
-  <div class="tab-pane" id="tabB">
-    <p style="margin-top: 15px;">
-      <% @portraits.each do |portrait| %>
-
-          <%= attachment_image_tag portrait, :image, :fill, 100, 100 %>
-            <% if current_customer != nil && portrait.customer.id != nil %>
-              <% if portrait.customer.id == current_customer.id %>
-                <%= link_to "Destroy", person_portrait_path(portrait.customer.id,portrait), method: :delete, class: "btn btn-default" %>
+        <div class="tab-pane" id="tabB">
+          <p style="margin-top: 15px;">
+            <% @portraits.each do |portrait| %>
+                <%= attachment_image_tag portrait, :image, :fill, 100, 100 %>
+                  <% if current_customer != nil && portrait.customer.id != nil %>
+                    <% if portrait.customer.id == current_customer.id %>
+                      <%= link_to "Destroy", person_portrait_path(portrait.customer.id,portrait), method: :delete, class: "btn btn-default" %>
+                    <% end %>
+                  <% end %>
               <% end %>
-            <% end %>
+          </p>
+        </div>
+        <div class="tab-pane" id="tabC">
+          <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>偉人名</th>
+            <th>タイトル</th>
+            <th>感想/説明</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @like_books.each do |book| %>
+        <tbody>
+          <tr>
+            <th><% if book.person_id != nil %>
+                  <%= link_to book.person.name, person_path(book.person.id) %>
+                <% end %>
+            </th>
+            <td><%= book.title%></td>
+            <td><%= book.caption %></td>
+            <td>
+              <% if current_customer != nil && book.customer_id == current_customer.id %>
+                <%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book) %>
+              <% end %>
+              <% if current_customer != nil && book.customer_id == current_customer.id %>
+                <%= link_to "消去", book_path(id: book.id, customer_id: book.customer.id), method: :delete %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
         <% end %>
-    </p>
-  </div>
-  <div class="tab-pane" id="tabC">
-    <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>偉人名</th>
-      <th>タイトル</th>
-      <th>感想/説明</th>
-      <th></th>
-    </tr>
-  </thead>
-  <% @like_books.each do |book| %>
-  <tbody>
-    <tr>
-      <th><% if book.person_id != nil %>
-            <%= link_to book.person.name, person_path(book.person.id) %>
-          <% end %>
-      </th>
-      <td><%= book.title%></td>
-      <td><%= book.caption %></td>
-      <td>
-        <% if current_customer != nil && book.customer_id == current_customer.id %>
-          <%= link_to "編集する", edit_person_book_path(person_id: params[:id], id: book) %>
-        <% end %>
-        <% if current_customer != nil && book.customer_id == current_customer.id %>
-          <%= link_to "消去", book_path(id: book.id, customer_id: book.customer.id), method: :delete %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-  <% end %>
-  </table>
-  </div>
-</div>
+        </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
